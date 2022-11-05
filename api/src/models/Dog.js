@@ -6,16 +6,17 @@ module.exports = (sequelize) => {
   sequelize.define(
     "dog",
     {
-      dog_id: {
-        type: DataTypes.INTEGER,
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4, //supuestamente genera id`s en el instante
         primaryKey: true,
-        autoIncrement: true,
+        // autoIncrement: true,
         allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true, //no puedo tener 3 razas igaules en la DB
+        unique: true, //no puedo tener 2 razas igaules en la DB
       },
       height: {
         type: DataTypes.INTEGER, //
