@@ -12,12 +12,4 @@ const router = Router();
 router.use("/dogs", dogsRouter);
 router.use("/temperaments", temperamentsRouter);
 
-// router.post("/dogs", async (req, res) => {
-//   const { name, heigth, weigth, life_span } = req.body;
-
-//   const newDog = await Dog.create(req.body);
-
-//   res.status(200).json(newDog);
-// });
-
 module.exports = router;
