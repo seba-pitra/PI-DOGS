@@ -9,9 +9,10 @@ const { getDogs } = require("./dogsControllers");
 //'Trainable,Stubborn'
 //ver como solucionarlo.
 
-//Despues guardar todo en la base de datos
+//X Despues guardar todo en la base de datos y trabajar, luego, solo con los datos de la DB
+
 const getTemperaments = async () => {
-  const dogs = await getDogs();
+  const dogs = await getDogs(); //All dogs
 
   let allTemperaments = [];
   while (dogs.length) {
@@ -19,18 +20,24 @@ const getTemperaments = async () => {
     allTemperaments.push(dog.temperaments);
   }
 
-  const myTemperaments = allTemperaments.join(",").split(",").sort(); //obtener TODOS los temps en un array
+  const myTemperaments = allTemperaments.join(",").split(",").sort(); //tener TODOS los temps en un array
 
   const filterTemperaments = []; //temperamentos NO REPETIDOS
 
   for (const temperament of myTemperaments) {
     if (!filterTemperaments.includes(temperament) && temperament) {
       filterTemperaments.push(temperament);
-      await Temperament.create({ name: temperament });
     }
   }
 
-  return filterTemperaments;
+  const mappedTemps = filterTemperaments.map((temp) => {
+    //se crea la collection para el bulkCreate
+    return { name: temp };
+  });
+
+  let dbTemperaments = await Temperament.bulkCreate(mappedTemps);
+
+  return dbTemperaments;
 };
 
 module.exports = { getTemperaments };
