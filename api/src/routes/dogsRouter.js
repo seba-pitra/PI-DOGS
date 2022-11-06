@@ -4,6 +4,7 @@ const {
   getDogs,
   createDog,
   searchDogByName,
+  searchDogById,
 } = require("../controllers/dogsControllers");
 
 const dogsRouter = Router();
@@ -39,7 +40,12 @@ dogsRouter.get("/", async (req, res) => {
 
 dogsRouter.get("/:id", async (req, res) => {
   try {
-  } catch (error) {}
+    const { id } = req.params;
+    const foundDog = await searchDogById(id);
+    res.status(200).json(foundDog);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
 });
 
 module.exports = dogsRouter;
