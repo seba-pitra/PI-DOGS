@@ -6,6 +6,7 @@ const {
   searchDogByName,
   searchDogById,
 } = require("../controllers/dogsControllers");
+const { getTemperaments } = require("../controllers/temperamentsControllers");
 
 const dogsRouter = Router();
 
@@ -16,8 +17,9 @@ const dogsRouter = Router();
 dogsRouter.post("/", async (req, res) => {
   try {
     const { name, height, weight, life_span } = req.body;
-    console.log(req.body);
 
+    await getTemperaments(); //Si no tengo temperaments en la DB,
+    // no voy a poder relacionar el dog con varios temperaments(addTemperaments)
     const newDog = await createDog(req.body);
 
     res.status(201).json(newDog);

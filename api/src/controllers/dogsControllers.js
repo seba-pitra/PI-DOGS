@@ -1,6 +1,7 @@
 const { API_KEY } = process.env;
 const fetch = require("node-fetch");
 const { Dog } = require("../db");
+// const { getTemperaments } = require("./temperamentsControllers.js");
 
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
 
@@ -10,7 +11,7 @@ const createDog = async ({ name, height, weight, life_span, temperaments }) => {
   }
 
   const newDog = await Dog.create({ name, height, weight, life_span });
-
+  await newDog.addTemperaments(temperaments); //se relaciona que un dog tiene varios temperaments
   return newDog;
 };
 
@@ -23,7 +24,7 @@ const getDogs = async () => {
       name: dog.name,
       life_span: dog.life_span,
       imgUrl: dog.image.url,
-      temperaments: dog.temperament,
+      temperaments: [dog.temperament].join(","),
       height: dog.height,
       weight: dog.weight,
     };
