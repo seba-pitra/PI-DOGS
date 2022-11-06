@@ -41,6 +41,11 @@ const getTemperaments = async () => {
     return searchDbTemp;
   } else {
     let dbTemperaments = await Temperament.bulkCreate(mappedTemps);
+
+    if (!dbTemperaments.length) {
+      throw new Error("No se han podido obtener los temperamentos");
+    }
+
     return dbTemperaments;
   }
 };
