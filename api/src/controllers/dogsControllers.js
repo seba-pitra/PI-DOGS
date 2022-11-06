@@ -47,7 +47,13 @@ const searchDogByName = async (name) => {
   ).then((res) => res.json());
 
   if (!foundDog.length) {
-    throw new Error("No se encontró ningún raza de perro con ese nombre");
+    const dbDogs = await Dog.findAll({ where: { name } });
+
+    if (!dbDogs.length) {
+      throw new Error("No se encontró ningún raza de perro con ese nombre");
+    }
+
+    return dbDogs;
   }
 
   return foundDog;
