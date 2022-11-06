@@ -10,8 +10,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use("/dogs", dogsRouter);
-//***********DESCOMENTAR LA SIGUIENTE PAPI */
-// router.use("/temperaments", temperamentsRouter);
+router.use("/temperaments", temperamentsRouter);
 
 // router.post("/dogs", async (req, res) => {
 //   const { name, heigth, weigth, life_span } = req.body;
