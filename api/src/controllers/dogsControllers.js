@@ -10,8 +10,16 @@ const createDog = async ({ name, height, weight, life_span, temperaments }) => {
     throw new Error("Faltan enviar datos obligatorios");
   }
 
+  const foundDog = await Dog.findOne({ where: { name } });
+
+  //si se encuentra algo...
+  if (foundDog) {
+    throw new Error("Ya existe un raza de perro con ese nombre");
+  }
+
   const newDog = await Dog.create({ name, height, weight, life_span });
   await newDog.addTemperaments(temperaments); //se relaciona que un dog tiene varios temperaments
+
   return newDog;
 };
 
