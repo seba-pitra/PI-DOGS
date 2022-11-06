@@ -35,9 +35,14 @@ const getTemperaments = async () => {
     return { name: temp };
   });
 
-  let dbTemperaments = await Temperament.bulkCreate(mappedTemps);
+  let searchDbTemp = await Temperament.findAll();
 
-  return dbTemperaments;
+  if (searchDbTemp.length) {
+    return searchDbTemp;
+  } else {
+    let dbTemperaments = await Temperament.bulkCreate(mappedTemps);
+    return dbTemperaments;
+  }
 };
 
 module.exports = { getTemperaments };
