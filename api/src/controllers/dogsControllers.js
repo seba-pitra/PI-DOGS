@@ -39,8 +39,6 @@ const getDogs = async () => {
 };
 
 const searchDogByName = async (name) => {
-  // const foundDog = await (await getDogs()).find((dog) => dog.name == name); //1ro se resuelve el get dogs y despues el find
-
   const foundDog = await fetch(
     `https://api.thedogapi.com/v1/breeds/search?q=${name}`
   ).then((res) => res.json());
@@ -53,13 +51,25 @@ const searchDogByName = async (name) => {
 };
 
 const searchDogById = async (id) => {
-  if (!id) {
-    throw new Error("No se encontró ninguna raza con ese id");
+  //Maneje los errores con un try-catch xq me mandaba un msj de error que no queria recibir
+  //detallado en lineas comentadas abajo.
+  try {
+    const foundDogApi = await (
+      await getDogs()
+    ).find((dog) => dog.id === parseInt(id));
+
+    if (!foundDogApi) {
+      const foundDogDb = await Dog.findOne({ where: { id } });
+      //findByPk no me funciona. Me mandaba el error:
+      // "la sintaxis de entrada no es válida para tipo uuid: «39696325-7668-499d-8682-add042d922a7324»"
+      //Queria poner un IF aqui pero el finder de sequelize tiraba error y no llegaba a esta linea
+      return foundDogDb;
+    }
+
+    return foundDogApi;
+  } catch {
+    throw new Error(`El id ${id} no corresponde a un personaje existente`);
   }
-
-  // const foundDog = await Dog.findByPk(id);
-
-  console.log(foundDog);
 };
 
 module.exports = {
