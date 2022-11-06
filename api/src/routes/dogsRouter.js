@@ -6,6 +6,7 @@ const {
   searchDogByName,
   searchDogById,
   updateDog,
+  deleteDog,
 } = require("../controllers/dogsControllers");
 const { getTemperaments } = require("../controllers/temperamentsControllers");
 
@@ -62,6 +63,18 @@ dogsRouter.put("/:attribute", async (req, res) => {
     const dogName = await updateDog(attribute, value, dogId);
 
     res.status(200).send(`Se actualizaron los datos de ${dogName}`);
+  } catch (err) {
+    res.status(404).send(err.message);
+  }
+});
+
+dogsRouter.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const dogName = await deleteDog(id);
+
+    res.status(200).send(`${dogName} fue borrado con éxito`);
   } catch (err) {
     res.status(404).send(err.message);
   }

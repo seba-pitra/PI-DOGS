@@ -107,10 +107,25 @@ const updateDog = async (attribute, value, dogId) => {
   return updatedDog.name;
 };
 
+const deleteDog = async (id) => {
+  const foundDog = await Dog.findByPk(id);
+
+  if (!foundDog) {
+    throw new Error("No se ha encontrado ningun perrito con ese nombre");
+  }
+
+  const name = foundDog.name;
+
+  await Dog.destroy({ where: { name } });
+
+  return name;
+};
+
 module.exports = {
   getDogs,
   createDog,
   searchDogByName,
   searchDogById,
   updateDog,
+  deleteDog,
 };
