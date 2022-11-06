@@ -5,11 +5,13 @@ const {
 
 const temperamentRouter = Router();
 
-temperamentRouter.get("/" = async(req,res) => {
+temperamentRouter.get("/", async (req, res) => {
   try {
-    const temperaments = await getTemperaments()
-    res.status(200).json(temperaments)
+    const temperaments = await getTemperaments();
+    res.status(200).json(temperaments);
   } catch (err) {
-    res.status(200).send(err.message)
+    res.status(200).send(err.message);
   }
-})
+});
+
+module.exports = temperamentRouter;
