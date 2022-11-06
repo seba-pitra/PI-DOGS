@@ -40,6 +40,7 @@ const getDogs = async () => {
   return [...infoDogs, ...dbDogs];
 };
 
+//me falta buscar nombre en la base de datos
 const searchDogByName = async (name) => {
   const foundDog = await fetch(
     `https://api.thedogapi.com/v1/breeds/search?q=${name}`
@@ -74,9 +75,28 @@ const searchDogById = async (id) => {
   }
 };
 
+const updateDog = async (attribute, value, dogId) => {
+  //Quiero usar esto para cambiar el nombre o peso o altura que EL CLIENTE CREA
+  if (!isNaN(dogId)) {
+    //si es un numero...
+    throw new Error("El id no es de tipo UUID");
+  }
+
+  const foundDog = await Dog.findByPk(dogId);
+
+  if (!foundDog) {
+    throw new Error("No se encontró ningun perro");
+  }
+
+  const updatedDog = await foundDog.update({ [attribute]: value });
+
+  return updatedDog.name;
+};
+
 module.exports = {
   getDogs,
   createDog,
   searchDogByName,
   searchDogById,
+  updateDog,
 };

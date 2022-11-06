@@ -5,6 +5,7 @@ const {
   createDog,
   searchDogByName,
   searchDogById,
+  updateDog,
 } = require("../controllers/dogsControllers");
 const { getTemperaments } = require("../controllers/temperamentsControllers");
 
@@ -47,6 +48,20 @@ dogsRouter.get("/:id", async (req, res) => {
     const { id } = req.params;
     const foundDog = await searchDogById(id);
     res.status(200).json(foundDog);
+  } catch (err) {
+    res.status(404).send(err.message);
+  }
+});
+
+dogsRouter.put("/:attribute", async (req, res) => {
+  try {
+    const { attribute } = req.params;
+    const { dogId } = req.query;
+    const { value } = req.body;
+
+    const dogName = await updateDog(attribute, value, dogId);
+
+    res.status(200).send(`Se actualizaron los datos de ${dogName}`);
   } catch (err) {
     res.status(404).send(err.message);
   }
