@@ -1,25 +1,55 @@
 const { API_KEY } = process.env;
 const fetch = require("node-fetch");
+const { Dog } = require("../db");
 
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
 
+const createDog = async ({ name, height, weight, life_span }) => {
+  if (!name || !height || !weight || !life_span) {
+    throw new Error("Faltan enviar datos obligatorios");
+  }
+
+  const newDog = await Dog.create({ name, height, weight, life_span });
+
+  return newDog;
+};
+
 const getDogs = async () => {
-  // console.log(fetch);
   const apiDogs = await fetch(urlApi).then((res) => res.json());
   const infoDogs = apiDogs.map((dog) => {
+    //me traigo solo las propiedades que quiero
     return {
       id: dog.id,
       name: dog.name,
       height: dog.height,
       weight: dog.weight,
       life_span: dog.life_span,
+      imgUrl: dog.image.url,
     };
   });
 
-  //retornar los dogs de la api + los de la bas de datos
-  return infoDogs;
+  const dbDogs = await Dog.findAll();
+
+  if (!infoDogs && !dbDogs) {
+    throw new Error("No se encontró ningún perro");
+  }
+
+  //no me retorna dos arrays diferentes. Estan todos los dogs, de la api y la DB adentro del mismo array
+  return [...infoDogs, ...dbDogs];
 };
 
-getDogs();
+const searchDogByName = async (name) => {
+  const foundDog = await (await getDogs()).find((dog) => dog.name == name); //1ro se resuelve el get dogs y despues el find
 
-module.exports = { getDogs };
+  if (!foundDog) {
+    throw new Error("No se encontró ningún raza de perro con ese nombre");
+  }
+
+  return foundDog;
+};
+
+searchDogById = async (id) => {
+  id;
+};
+
+module.exports = { getDogs, createDog, searchDogByName };
