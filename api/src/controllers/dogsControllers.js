@@ -4,7 +4,7 @@ const { Dog } = require("../db");
 
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
 
-const createDog = async ({ name, height, weight, life_span }) => {
+const createDog = async ({ name, height, weight, life_span, temperaments }) => {
   if (!name || !height || !weight || !life_span) {
     throw new Error("Faltan enviar datos obligatorios");
   }
@@ -21,10 +21,11 @@ const getDogs = async () => {
     return {
       id: dog.id,
       name: dog.name,
-      height: dog.height,
-      weight: dog.weight,
       life_span: dog.life_span,
       imgUrl: dog.image.url,
+      temperaments: dog.temperament,
+      height: dog.height,
+      weight: dog.weight,
     };
   });
 
