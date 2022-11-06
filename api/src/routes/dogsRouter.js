@@ -9,6 +9,10 @@ const {
 
 const dogsRouter = Router();
 
+//BUENAS PRACTICAS:
+//1- VARIAR EL STATUS CODE
+//2- hacer CRUD
+
 dogsRouter.post("/", async (req, res) => {
   try {
     const { name, height, weight, life_span } = req.body;
@@ -16,7 +20,7 @@ dogsRouter.post("/", async (req, res) => {
 
     const newDog = await createDog(req.body);
 
-    res.status(200).json(newDog);
+    res.status(201).json(newDog);
   } catch (err) {
     res.status(400).send(err.message);
   }
@@ -34,7 +38,7 @@ dogsRouter.get("/", async (req, res) => {
       res.status(200).json(dogs);
     }
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(404).send(err.message);
   }
 });
 
@@ -44,7 +48,7 @@ dogsRouter.get("/:id", async (req, res) => {
     const foundDog = await searchDogById(id);
     res.status(200).json(foundDog);
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(404).send(err.message);
   }
 });
 
