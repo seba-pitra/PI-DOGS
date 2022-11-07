@@ -1,6 +1,6 @@
 const { API_KEY } = process.env;
 const fetch = require("node-fetch");
-const { Dog } = require("../db");
+const { Dog, Temperament } = require("../db");
 // const { getTemperaments } = require("./temperamentsControllers.js");
 
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
@@ -17,7 +17,13 @@ const createDog = async ({ name, height, weight, life_span, temperaments }) => {
     throw new Error("Ya existe un raza de perro con ese nombre");
   }
 
-  const newDog = await Dog.create({ name, height, weight, life_span });
+  const newDog = await Dog.create({
+    name,
+    height,
+    weight,
+    life_span,
+  });
+
   await newDog.addTemperaments(temperaments); //se relaciona que un dog tiene varios temperaments
 
   return newDog;
@@ -38,7 +44,7 @@ const getDogs = async () => {
     };
   });
 
-  const dbDogs = await Dog.findAll();
+  const dbDogs = await Dog.findAll({ include: Temperament }); //incluye los datos de la tabla intermedia
 
   if (!infoDogs && !dbDogs) {
     throw new Error("No se encontró ningún perro");
@@ -48,7 +54,6 @@ const getDogs = async () => {
   return [...infoDogs, ...dbDogs];
 };
 
-//me falta buscar nombre en la base de datos
 const searchDogByName = async (name) => {
   const foundDog = await fetch(
     `https://api.thedogapi.com/v1/breeds/search?q=${name}`
