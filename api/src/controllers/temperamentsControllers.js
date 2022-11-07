@@ -20,6 +20,8 @@ const getTemperaments = async () => {
     allTemperaments.push(dog.temperaments);
   }
 
+  //Hago un join para crear un string muy grande todas las posiciones(temps)
+  // y luego hago un split a este para crear un array con todas las posiciones separadas por comma
   const myTemperaments = allTemperaments.join(",").split(",").sort(); //tener TODOS los temps en un array
 
   const filterTemperaments = []; //temperamentos NO REPETIDOS
