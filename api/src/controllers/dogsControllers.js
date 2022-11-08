@@ -39,8 +39,8 @@ const getDogs = async () => {
       life_span: dog.life_span,
       imgUrl: dog.image.url,
       temperaments: [dog.temperament].join(","),
-      height: dog.height,
-      weight: dog.weight,
+      height: dog.height.metric + " cm",
+      weight: dog.weight.metric + " kg",
     };
   });
 
