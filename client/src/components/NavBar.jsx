@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../../stylesheets/NavBar.module.css";
-import img from "../../img/logo-dog.png";
+import styles from "../stylesheets/NavBar.module.css";
+import img from "../img/logo-dog.png";
 
 //color: #7DCCFF
+
 const Nav = (props) => {
   return (
     <div className={styles.nav}>

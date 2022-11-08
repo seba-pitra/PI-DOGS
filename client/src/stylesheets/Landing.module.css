@@ -1,0 +1,35 @@
+.landing-container {
+  border-radius: 30px;
+  border: solid 2px black;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  color: #09a0f7;
+}
+
+.landing-button {
+  height: 45px;
+  width: 250px;
+  background-color: #09a0f7;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.landing-button:hover {
+  background-color: rgba(35, 39, 166, 0.578);
+}
+
+.landing-img {
+  height: 400px;
+  border-radius: 30px;
+}
