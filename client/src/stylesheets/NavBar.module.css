@@ -1,0 +1,46 @@
+.nav {
+  background-color: #09a0f7;
+  height: 60px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.863);
+  font-weight: bold;
+}
+
+a:hover {
+  color: rgba(35, 107, 166, 0.578);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+img {
+  height: 60px;
+}
+
+.page-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+input {
+  width: 250px;
+  border-radius: 20px;
+  height: 33px;
+  padding: 0 10px;
+  font-size: 15px;
+  border: none;
+  background-color: #e8eef2;
+}

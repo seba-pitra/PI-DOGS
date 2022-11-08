@@ -1,9 +1,11 @@
-import './App.css';
+import "./App.css";
+import Nav from "./components/NavBar/NavBar";
+import { Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Dogs</h1>
+      <Route path={"/"} component={Nav} />
     </div>
   );
 }

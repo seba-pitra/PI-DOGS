@@ -16,10 +16,10 @@ export const getAllDogs = () => {
   };
 };
 
-export const createDog = () => {
-  return (dispatch) => {
-    fetch("http://localhost:3001/dogs", {
-      method: "POST",
-    }).then;
-  };
-};
+// export const createDog = () => {
+//   return (dispatch) => {
+//     fetch("http://localhost:3001/dogs", {
+//       method: "POST",
+//     }).then;
+//   };
+// };
