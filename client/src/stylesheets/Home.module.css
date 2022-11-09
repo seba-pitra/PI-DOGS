@@ -25,3 +25,8 @@
   gap: 30px;
   justify-items: center;
 }
+
+.home-filter-bar {
+  background-color: #0a99ec;
+  width: 100px;
+}

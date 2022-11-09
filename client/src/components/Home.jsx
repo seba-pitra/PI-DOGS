@@ -20,6 +20,7 @@ const Home = (props) => {
     <div className={styles.home}>
       <Nav />
       <div className={styles["home-container"]}>
+        <div className={styles["home-filter-bar"]}>hola</div>
         {allDogs &&
           allDogs.map((dog) => (
             <DogCard id={dog.id} imgUrl={dog.imgUrl} name={dog.name} />

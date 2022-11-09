@@ -9,10 +9,10 @@ const Nav = (props) => {
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
-        <Link to={"/"}>
+        <Link to={"/home"}>
           <img src={img} alt="logo-dogs" />
         </Link>
-        <Link to={"/"}>
+        <Link to={"/home"}>
           <h3>Dogs</h3>
         </Link>
       </div>
