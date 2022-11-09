@@ -1,4 +1,5 @@
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
+export const GET_DOG_DETAIL = "GET_DOG_DETAIL";
 export const CREATE_DOG = "CREATE_DOG";
 export const UPDATE_DOG = "UPDATE_DOG";
 export const DELETE_DOG = "DELETE_DOG";
@@ -16,10 +17,26 @@ export const getAllDogs = () => {
   };
 };
 
-// export const createDog = () => {
-//   return (dispatch) => {
-//     fetch("http://localhost:3001/dogs", {
-//       method: "POST",
-//     }).then;
-//   };
-// };
+export const getDogDetail = (id) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3001/dogs/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({ type: GET_DOG_DETAIL, payload: data });
+      });
+  };
+};
+
+//lo hice asi nomas. Despues fijarse
+export const createDog = (dogInfo) => {
+  return (dispatch) => {
+    fetch("http://localhost:3001/dogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then(() => {
+        dispatch({ type: CREATE_DOG, payload: dogInfo });
+      });
+  };
+};
