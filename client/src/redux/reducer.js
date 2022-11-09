@@ -9,7 +9,7 @@ import {
 } from "./actions.js";
 
 const initialState = {
-  dogs: [],
+  allDogs: [],
   dogDetail: [],
 };
 
@@ -18,7 +18,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_DOGS:
       return {
         ...state,
-        dogs: action.payload,
+        allDogs: action.payload,
       };
     default:
       return { ...state };
