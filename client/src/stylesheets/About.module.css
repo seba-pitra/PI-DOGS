@@ -1,0 +1,74 @@
+@keyframes slidein {
+  from {
+    margin-right: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+
+.about {
+  background-color: #fdfdfd;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.about-description {
+  width: 500px;
+}
+
+.about-img {
+  height: 400px;
+  border-radius: 30px;
+}
+
+.about-me-container {
+  height: 250px;
+  margin-top: 30px;
+  background-color: #0a99ec;
+  color: rgba(255, 255, 255, 0.863);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about-me-text-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.my-links {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.my-link {
+  display: flex;
+  align-items: center;
+}
+
+.linkedin-logo {
+  height: 30px;
+  margin-left: -4px;
+  margin-right: 6px;
+}
+
+.github-logo {
+  height: 23px;
+}
+
+.github-text {
+  margin-left: 10px;
+}
