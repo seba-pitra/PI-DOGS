@@ -18,7 +18,7 @@ const Landing = (props) => {
             alt="landing-happy-dogs"
             className={style["landing-happy-dogs-img"]}
           />
-          <Link to={"/"}>
+          <Link to={"/home"}>
             <button className={style["landing-button"]}>¡Hagamoslo!</button>
           </Link>
         </div>

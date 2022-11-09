@@ -17,7 +17,7 @@ const Nav = (props) => {
         </Link>
       </div>
       <div className={styles["page-links"]}>
-        <Link to={"/"}>Home</Link>
+        <Link to={"/home"}>Home</Link>
         <Link to={"/about"}>Sobre Nosotros</Link>
         <input type="text" placeholder="Busca tu perro..." />
       </div>

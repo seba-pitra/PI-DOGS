@@ -11,14 +11,17 @@
 }
 
 .home {
-  animation-duration: 3s;
-  animation-name: slidein;
 }
 
 .home-container {
-  width: 130vh;
+  background-color: #fdfdfd;
+  padding-top: 20px;
+  animation-duration: 3s;
+  animation-name: slidein;
+  width: 100%;
   display: grid;
   /* se divide en tres columnas */
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
   justify-items: center;
 }

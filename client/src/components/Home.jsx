@@ -18,7 +18,7 @@ const Home = (props) => {
 
   return (
     <div className={styles.home}>
-      {/* <Nav /> */}
+      <Nav />
       <div className={styles["home-container"]}>
         {allDogs &&
           allDogs.map((dog) => (
