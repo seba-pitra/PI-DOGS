@@ -1,18 +1,47 @@
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.landing {
+  background-color: #fdfdfd;
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
 .landing-container {
-  border-radius: 30px;
-  border: solid 2px black;
+  border: solid 2px #fdfdfd;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 20px;
 }
 
-.text-container {
+h1 {
+  margin: 0;
+}
+
+.landing-left-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
   align-items: center;
   gap: 60px;
   color: #09a0f7;
+}
+
+.landing-happy-dogs-img {
+  height: 100px;
 }
 
 .landing-button {

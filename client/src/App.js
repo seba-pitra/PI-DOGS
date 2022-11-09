@@ -1,13 +1,13 @@
 import "./App.css";
-import Nav from "./components/NavBar";
 import { Route } from "react-router-dom";
 import Landing from "./components/Landing";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
-      <Route path={"/"} component={Nav} />
       <Route exact path={"/landing"} component={Landing} />
+      <Route exact path={"/"} render={() => <Home />} />
     </div>
   );
 }
