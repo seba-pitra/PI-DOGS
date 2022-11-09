@@ -1,5 +1,6 @@
 import {
   GET_ALL_DOGS,
+  GET_DOG_DETAIL,
   CREATE_DOG,
   UPDATE_DOG,
   DELETE_DOG,
@@ -10,7 +11,7 @@ import {
 
 const initialState = {
   allDogs: [],
-  dogDetail: [],
+  dogDetail: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allDogs: action.payload,
+      };
+    case GET_DOG_DETAIL:
+      return {
+        ...state,
+        dogDetail: action.payload,
       };
     default:
       return { ...state };

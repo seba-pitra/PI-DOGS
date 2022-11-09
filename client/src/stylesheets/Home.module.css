@@ -1,0 +1,24 @@
+@keyframes slidein {
+  from {
+    transform: translateX(100%);
+    width: 300%;
+  }
+
+  to {
+    transform: translateX(0%);
+    width: 100%;
+  }
+}
+
+.home {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+.home-container {
+  width: 130vh;
+  display: grid;
+  /* se divide en tres columnas */
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
