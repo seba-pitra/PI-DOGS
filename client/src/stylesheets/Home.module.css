@@ -11,17 +11,18 @@
 }
 
 .home {
+  overflow: hidden;
 }
 
 .home-container {
-  background-color: #fdfdfd;
+  background-color: #f5f5f5;
   padding-top: 20px;
   animation-duration: 3s;
   animation-name: slidein;
   width: 100%;
   display: grid;
   /* se divide en tres columnas */
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
   justify-items: center;
 }

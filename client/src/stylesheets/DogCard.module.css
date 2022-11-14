@@ -1,7 +1,21 @@
+@keyframes slidein {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(10px);
+  }
+}
+
 .Dog-card {
-  background-color: rgb(245, 242, 242);
+  background-color: #e1e1e1;
   border-radius: 30px;
   padding: 20px;
+}
+.Dog-card:hover {
+  animation-duration: 1s;
+  animation-name: slidein;
 }
 
 .Dog-card-container {

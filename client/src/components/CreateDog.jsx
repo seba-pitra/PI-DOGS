@@ -1,7 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import * as actions from "../redux/actions.js";
+// import { useDispatch } from "react-redux";
+// import { Link } from "react-router-dom";
+// import * as actions from "../redux/actions.js";
 
 const CreateDog = ({ match }) => {
   // const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const CreateDog = ({ match }) => {
 
   return (
     <div>
-      <div></div>
+      <h1>Soy el form</h1>
     </div>
   );
 };
