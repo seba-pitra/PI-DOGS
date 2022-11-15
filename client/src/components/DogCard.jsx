@@ -13,7 +13,7 @@ const DogCard = ({ name, imgUrl, id }) => {
 
   return (
     <div className={styles["Dog-card"]}>
-      <Link to={`/dogs/${id}`} onClick={handleClick}>
+      <Link to={`/dog/${id}`} onClick={handleClick}>
         <div className={styles["Dog-card-container"]}>
           <p className={styles["Dog-card-link"]}>¡Mira los detalles!</p>
           <img

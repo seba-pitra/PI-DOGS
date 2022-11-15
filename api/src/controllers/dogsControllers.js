@@ -6,7 +6,8 @@ const { Dog, Temperament } = require("../db");
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
 
 const createDog = async ({ name, height, weight, life_span, temperaments }) => {
-  if (!name || !height || !weight || !life_span) {
+  //le quite el life-span al condicional
+  if (!name || !height || !weight) {
     throw new Error("Faltan enviar datos obligatorios");
   }
 

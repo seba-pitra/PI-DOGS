@@ -31,7 +31,12 @@ const Home = (props) => {
       <div className={styles["home-container"]}>
         {currentDogs &&
           currentDogs.map((dog) => (
-            <DogCard id={dog.id} imgUrl={dog.imgUrl} name={dog.name} />
+            <DogCard
+              key={dog.id}
+              id={dog.id}
+              imgUrl={dog.imgUrl}
+              name={dog.name}
+            />
           ))}
       </div>
       {allDogs && currentDogs && (

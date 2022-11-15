@@ -31,7 +31,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
     );
   });
 
-  let splicePagesNumber =
+  let splicePagesNumber = //solo se muestras 12 paginas
     currentPage < 12 ? pagesNumbers.slice(0, 11) : pagesNumbers.slice(11);
 
   const nextButtonHandler = () => {
