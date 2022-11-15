@@ -27,6 +27,16 @@ export const getDogDetail = (id) => {
   };
 };
 
+export const searchRaceName = (name) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3001/dogs?name=${name}`)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({ type: SEARCH_RACE_NAME, payload: data });
+      });
+  };
+};
+
 //lo hice asi nomas. Despues fijarse
 export const createDog = (dogInfo) => {
   return (dispatch) => {

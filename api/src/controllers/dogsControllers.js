@@ -55,9 +55,10 @@ const getDogs = async () => {
 };
 
 const searchDogByName = async (name) => {
-  const foundDog = await fetch(
-    `https://api.thedogapi.com/v1/breeds/search?q=${name}`
-  ).then((res) => res.json());
+  const foundDog = await getDogs();
+  const foundDogFilter = foundDog.filter((dog) =>
+    dog.name.toLowerCase().includes(name)
+  );
 
   if (!foundDog.length) {
     const dbDogs = await Dog.findAll({ where: { name } });
@@ -69,7 +70,7 @@ const searchDogByName = async (name) => {
     return dbDogs;
   }
 
-  return foundDog;
+  return foundDogFilter;
 };
 
 const searchDogById = async (id) => {

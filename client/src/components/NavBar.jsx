@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../stylesheets/NavBar.module.css";
 import img from "../img/logo-dog.png";
+import { useDispatch } from "react-redux";
+import * as actions from "../redux/actions";
 
 //color: #7DCCFF
 
 const Nav = (props) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const dispatch = useDispatch();
+
+  const changeHandler = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  React.useEffect(() => {
+    dispatch(actions.searchRaceName(inputValue));
+  }, [inputValue]);
+
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
@@ -20,7 +34,11 @@ const Nav = (props) => {
         <Link to={"/home"}>Home</Link>
         <Link to={"/about"}>Sobre Nosotros</Link>
         <Link to={"/dogs/create"}>Crea tu raza</Link>
-        <input type="text" placeholder="Busca tu perro..." />
+        <input
+          type="text"
+          placeholder="Busca tu perro..."
+          onChange={changeHandler}
+        />
       </div>
     </div>
   );

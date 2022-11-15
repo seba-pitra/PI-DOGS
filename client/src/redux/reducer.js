@@ -1,10 +1,10 @@
 import {
   GET_ALL_DOGS,
   GET_DOG_DETAIL,
+  SEARCH_RACE_NAME,
   CREATE_DOG,
   UPDATE_DOG,
   DELETE_DOG,
-  SEARCH_RACE_NAME,
   GET_ALL_TEMPERAMENTS,
   //DESPUES AGREGAR MAS
 } from "./actions.js";
@@ -25,6 +25,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogDetail: action.payload,
+      };
+    case SEARCH_RACE_NAME:
+      return {
+        ...state,
+        allDogs: action.payload,
       };
     default:
       return { ...state };

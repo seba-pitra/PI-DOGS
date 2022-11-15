@@ -1,0 +1,61 @@
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+    /* el width es para tener el "el html" fuera del borde derecho de la pantalla */
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.paginated {
+  animation-duration: 4s;
+  animation-name: slidein;
+}
+
+.paginated-container {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 20px;
+  width: 1000px;
+  background-color: #e6e4e4;
+  margin: 0 auto 20px;
+  border-radius: 30px;
+}
+
+.paginated-title {
+  background-color: #f2efef;
+  width: 50px;
+  padding: 7px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.paginated-title:hover {
+  background-color: #0a99ec;
+}
+
+.paginated-button {
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.paginated-button:hover {
+  background-color: #0a99ec;
+}
+
+.current-page {
+  background-color: #42b7fa;
+  width: 50px;
+  padding: 7px;
+  border-radius: 30px;
+  cursor: pointer;
+}
