@@ -11,6 +11,16 @@
   }
 }
 
+@keyframes moveInHover {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(5px);
+  }
+}
+
 .paginated {
   animation-duration: 4s;
   animation-name: slidein;
@@ -37,6 +47,8 @@
 
 .paginated-title:hover {
   background-color: #0a99ec;
+  animation-duration: 1s;
+  animation-name: moveInHover;
 }
 
 .paginated-button {
@@ -50,6 +62,8 @@
 
 .paginated-button:hover {
   background-color: #0a99ec;
+  animation-duration: 1s;
+  animation-name: moveInHover;
 }
 
 .current-page {

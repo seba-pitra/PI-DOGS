@@ -9,6 +9,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
   }
 
   const pagesNumbers = totalPageNumbers.map((pageNum) => {
+    //si la page que se itera es la pagina actual se tiñe de color
     if (pageNum === currentPage) {
       return (
         <h1
@@ -40,7 +41,10 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
 
     if (firstIndex === totalElements) return; //si el index es igual al total es xq llego al final de la pagina
 
-    paginated(nextPage);
+    if (currentPage < 22) {
+      //mas de la pagina 22 no va a pasar
+      paginated(nextPage);
+    }
 
     if (currentPage > 10) {
       splicePagesNumber = pagesNumbers.slice(11);
@@ -50,13 +54,14 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
   const prevButtonHandler = () => {
     const prevPage = currentPage - 1;
 
-    if (prevPage < 0) return;
-
     if (currentPage < 11) {
       splicePagesNumber = pagesNumbers.slice(0, 11);
     }
 
-    paginated(prevPage);
+    if (currentPage > 1) {
+      //menos de la pagina 1 no va a ir
+      paginated(prevPage);
+    }
   };
 
   return (
