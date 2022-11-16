@@ -1,8 +1,8 @@
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL";
 export const CREATE_DOG = "CREATE_DOG";
-export const UPDATE_DOG = "UPDATE_DOG";
-export const DELETE_DOG = "DELETE_DOG";
+// export const UPDATE_DOG = "UPDATE_DOG";
+// export const DELETE_DOG = "DELETE_DOG";
 export const SEARCH_RACE_NAME = "SEARCH_RACE_NAME";
 export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
 
@@ -43,10 +43,21 @@ export const createDog = (dogInfo) => {
     fetch("http://localhost:3001/dogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dogInfo),
     })
       .then((res) => res.json())
       .then(() => {
         dispatch({ type: CREATE_DOG, payload: dogInfo });
+      });
+  };
+};
+
+export const getTemperaments = () => {
+  return (dispatch) => {
+    fetch("http://localhost:3001/temperaments")
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({ type: GET_ALL_TEMPERAMENTS, payload: data });
       });
   };
 };

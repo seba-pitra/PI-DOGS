@@ -12,6 +12,7 @@ import {
 const initialState = {
   allDogs: [],
   dogDetail: {},
+  allTemperaments: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,6 +27,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogDetail: action.payload,
       };
+    case GET_ALL_TEMPERAMENTS: {
+      return {
+        ...state,
+        allTemperaments: action.payload,
+      };
+    }
     case SEARCH_RACE_NAME:
       return {
         ...state,

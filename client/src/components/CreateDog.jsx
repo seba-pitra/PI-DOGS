@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../stylesheets/CreateDog.module.css";
 import img from "../img/about-dog.avif";
+import * as actions from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const CreateDog = (props) => {
   const [input, setInput] = useState({
@@ -9,6 +11,7 @@ const CreateDog = (props) => {
     weight: "",
     lifeSpan: "",
     temperaments: [],
+    nameTempermants: [],
   });
 
   const [errors, setErrors] = useState({
@@ -54,8 +57,38 @@ const CreateDog = (props) => {
     );
   };
 
+  const handleSelect = (e) => {
+    const inputTemperament = e.target.value;
+
+    const foundTemp = allTemperaments.find(
+      (temp) => temp.name === inputTemperament
+    );
+
+    setInput({
+      ...input,
+      temperaments: [...input.temperaments, foundTemp.id],
+      nameTempermants: [...input.nameTempermants, inputTemperament],
+    });
+  };
+
+  console.log(input);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(input);
+    dispatch(actions.createDog(input));
+  };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.getTemperaments());
+  }, []);
+
+  const allTemperaments = useSelector((state) => state.allTemperaments);
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <h1>Create tu propia raza</h1>
       <div className={styles["form-container"]}>
         <img src={img} alt="form-img" className={styles["form-img"]} />
@@ -117,10 +150,22 @@ const CreateDog = (props) => {
               onChange={handleInputChange}
             />
           </div>
-          <div className={styles["form-temperaments"]}>
-            <select name="" id="">
-              {/* poner temperamentos */}
+          <div className={styles["select-container"]}>
+            <label htmlFor="select">Selecciona temperamentos</label>
+            <select
+              className={styles["form-select"]}
+              name="select"
+              onChange={handleSelect}
+            >
+              {allTemperaments.map((temp) => (
+                <option className={styles["input-container"]} value={temp.name}>
+                  {temp.name}
+                </option>
+              ))}
             </select>
+            {input.nameTempermants.map((temp) => (
+              <p>{temp}</p>
+            ))}
           </div>
           <button
             type="submit"
