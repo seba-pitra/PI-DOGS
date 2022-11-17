@@ -70,6 +70,9 @@ module.exports = (sequelize) => {
           },
         },
       },
+      imgUrl: {
+        type: DataTypes.STRING,
+      },
     },
     {
       timestamps: false, //no aparece createdAt y updatedAt

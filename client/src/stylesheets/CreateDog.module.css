@@ -1,26 +1,38 @@
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
 .form {
-  background-color: #31b2fd;
-  border-radius: 30px;
+  background-color: #48b7f8;
   padding: 30px;
-  width: 120vh;
-  height: 90vh;
   margin: 0 auto;
   color: #ffffff;
+  overflow: hidden;
 }
 
 .form-container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  animation-duration: 2s;
+  animation-name: slidein;
 }
 
 .form-img {
-  height: 600px;
+  height: 650px;
   border-radius: 30px;
 }
 
 .all-inputs-container {
-  height: 500px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -29,7 +41,14 @@
 .input-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.height-input-container,
+.weight-input-container {
+  display: flex;
+  margin: 10px 0;
 }
 
 .form-input {
@@ -47,15 +66,34 @@
 .select-container {
   display: flex;
   flex-direction: column;
+  text-align: left;
   margin-top: 10px;
 }
 
 .form-select {
+  width: 270px;
+  height: 45px;
   background-color: #f2f2f2;
   height: 45px;
   font-size: 18px;
   border-radius: 30px;
   padding: 5px;
+}
+
+.chosen-temperaments {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+.name-temperaments {
+  margin: 0 10px 10px;
+  padding: 5px;
+  height: fit-content;
+  background-color: rgb(248, 248, 37);
+  color: black;
+  border-radius: 8px;
 }
 
 .form-button {

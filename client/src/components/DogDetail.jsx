@@ -15,14 +15,25 @@ const DogDetail = ({ match }) => {
 
   const dog = useSelector((state) => state.dogDetail);
 
+  let mappedTemperaments;
+  if (typeof dog.temperaments !== "string") {
+    mappedTemperaments =
+      dog.temperaments && dog.temperaments.map((d) => d.name).join(",");
+  }
+
   return (
     <div className={styles["dog-detail"]}>
       <Link to={"/home"}>{"<"}</Link>
       <div className={styles["dog-detail-container"]}>
         <h2 className={styles["dog-detail-title"]}>{dog.name}</h2>
         <img src={dog.imgUrl} alt="" className={styles["dog-detail-img"]} />
+
         <div className={styles["dog-detail-description"]}>
-          <span className={styles["dog-detail-span"]}>{dog.temperaments}</span>
+          <span className={styles["dog-detail-temperaments"]}>
+            {typeof dog.temperaments === "string"
+              ? dog.temperaments
+              : mappedTemperaments}
+          </span>
           <span className={styles["dog-detail-span"]}>{dog.height}</span>
           <span className={styles["dog-detail-span"]}>{dog.weight}</span>
           <span className={styles["dog-detail-span"]}>{dog.life_span}</span>

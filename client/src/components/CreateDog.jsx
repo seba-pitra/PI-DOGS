@@ -7,8 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 const CreateDog = (props) => {
   const [input, setInput] = useState({
     name: "",
-    height: "",
-    weight: "",
+    minHeight: "",
+    maxHeight: "",
+    minWeight: "",
+    maxWeight: "",
+    imgUrl: "",
     lifeSpan: "",
     temperaments: [],
     nameTempermants: [],
@@ -29,11 +32,19 @@ const CreateDog = (props) => {
       errors.name = "* Name is required";
     }
 
-    if (!input.height) {
-      errors.height = "* Height is required";
+    if (!input.minHeight) {
+      errors.height = "* min Height is required";
     }
 
-    if (!input.weight) {
+    if (!input.maxHeight) {
+      errors.height = "* max Height is required";
+    }
+
+    if (!input.minWeight) {
+      errors.weight = "* Weight is required";
+    }
+
+    if (!input.maxWeight) {
       errors.weight = "* Weight is required";
     }
 
@@ -71,12 +82,16 @@ const CreateDog = (props) => {
     });
   };
 
-  console.log(input);
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(input);
-    dispatch(actions.createDog(input));
+    const dispatchInput = {
+      ...input,
+      height: `${input.maxHeight} - ${input.maxHeight} cm`,
+      weight: `${input.minWeight} - ${input.maxWeight} kg`,
+    };
+
+    dispatch(actions.createDog(dispatchInput));
   };
 
   const dispatch = useDispatch();
@@ -107,37 +122,84 @@ const CreateDog = (props) => {
             )}
             {/* se muestar el string que tengo guardado en errors */}
           </div>
-          <div className={styles["input-container"]}>
-            <label htmlFor="height">Altura *</label>
-            <input
-              type="text"
-              className={
-                (errors.height && styles.danger) || styles["form-input"]
-              }
-              placeholder="30 - 40"
-              name="height"
-              value={input.height}
-              onChange={handleInputChange}
-            />
-            {errors.height && (
-              <p className={styles["form-error-input"]}>{errors.height}</p>
-            )}
+          <div className={styles["height-input-container"]}>
+            <div className={styles["input-container"]}>
+              <label htmlFor="minHeight">Altura minima*</label>
+              <input
+                type="number"
+                className={
+                  (errors.height && styles.danger) || styles["form-input"]
+                }
+                placeholder="30 - 40"
+                name="minHeight"
+                value={input.minHeight}
+                onChange={handleInputChange}
+              />
+              {errors.height && (
+                <p className={styles["form-error-input"]}>{errors.height}</p>
+              )}
+            </div>
+            <div className={styles["input-container"]}>
+              <label htmlFor="maxHeight">Altura maxima *</label>
+              <input
+                type="number"
+                className={
+                  (errors.height && styles.danger) || styles["form-input"]
+                }
+                placeholder="30 - 40"
+                name="maxHeight"
+                value={input.maxHeight}
+                onChange={handleInputChange}
+              />
+              {errors.height && (
+                <p className={styles["form-error-input"]}>{errors.height}</p>
+              )}
+            </div>
+          </div>
+          <div className={styles["weight-input-container"]}>
+            <div className={styles["input-container"]}>
+              <label htmlFor="minWeight">Peso minimo*</label>
+              <input
+                type="text"
+                className={
+                  (errors.weight && styles.danger) || styles["form-input"]
+                }
+                placeholder="10 - 15"
+                name="minWeight"
+                value={input.weight}
+                onChange={handleInputChange}
+              />
+              {errors.weight && (
+                <p className={styles["form-error-input"]}>{errors.weight}</p>
+              )}
+            </div>
+            <div className={styles["input-container"]}>
+              <label htmlFor="maxWeight">Peso maximo*</label>
+              <input
+                type="text"
+                className={
+                  (errors.weight && styles.danger) || styles["form-input"]
+                }
+                placeholder="10 - 15"
+                name="maxWeight"
+                value={input.maxWeight}
+                onChange={handleInputChange}
+              />
+              {errors.weight && (
+                <p className={styles["form-error-input"]}>{errors.weight}</p>
+              )}
+            </div>
           </div>
           <div className={styles["input-container"]}>
-            <label htmlFor="weight">Peso *</label>
+            <label htmlFor="life-span">Image URL</label>
             <input
               type="text"
-              className={
-                (errors.weight && styles.danger) || styles["form-input"]
-              }
-              placeholder="10 - 15"
-              name="weight"
-              value={input.weight}
+              className={styles["form-input"]}
+              placeholder="http://..."
+              name="imgUrl"
+              value={input.imgUrl}
               onChange={handleInputChange}
             />
-            {errors.weight && (
-              <p className={styles["form-error-input"]}>{errors.weight}</p>
-            )}
           </div>
           <div className={styles["input-container"]}>
             <label htmlFor="life-span">Esperanza de vida</label>
@@ -163,13 +225,24 @@ const CreateDog = (props) => {
                 </option>
               ))}
             </select>
-            {input.nameTempermants.map((temp) => (
-              <p>{temp}</p>
-            ))}
+            <div className={styles["chosen-temperaments"]}>
+              {input.nameTempermants.map((temp) => (
+                <p className={styles["name-temperaments"]}>{temp}</p>
+              ))}
+            </div>
           </div>
           <button
             type="submit"
-            disabled={errors.name || errors.height || errors.weight}
+            disabled={
+              errors.name ||
+              errors.height ||
+              errors.weight ||
+              !input.name ||
+              !input.minHeight ||
+              !input.maxHeight ||
+              !input.minWeight ||
+              !input.maxWeight
+            }
             className={styles["form-button"]}
           >
             Crear

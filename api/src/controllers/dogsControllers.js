@@ -5,7 +5,14 @@ const { Dog, Temperament } = require("../db");
 
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
 
-const createDog = async ({ name, height, weight, life_span, temperaments }) => {
+const createDog = async ({
+  name,
+  height,
+  weight,
+  imgUrl,
+  life_span,
+  temperaments,
+}) => {
   //le quite el life-span al condicional
   if (!name || !height || !weight) {
     throw new Error("Faltan enviar datos obligatorios");
@@ -22,6 +29,7 @@ const createDog = async ({ name, height, weight, life_span, temperaments }) => {
     name,
     height,
     weight,
+    imgUrl,
     life_span,
   });
 
@@ -52,7 +60,7 @@ const getDogs = async () => {
   }
 
   //no me retorna dos arrays diferentes. Estan todos los dogs, de la api y la DB adentro del mismo array
-  return [...infoDogs, ...dbDogs];
+  return [...dbDogs, ...infoDogs];
 };
 
 const searchDogByName = async (name) => {
@@ -80,19 +88,21 @@ const searchDogById = async (id) => {
   try {
     const foundDogApi = await (
       await getDogs()
-    ).find((dog) => dog.id === parseInt(id));
+    ).find((dog) => !isNaN(id) && dog.id === parseInt(id));
 
     if (!foundDogApi) {
-      const foundDogDb = await Dog.findOne({ where: { id } });
+      const foundDogsDb = await Dog.findAll({ include: Temperament });
+      const filterDogById = await foundDogsDb.find((dog) => dog.id == id);
       //findByPk no me funciona. Me mandaba el error:
       // "la sintaxis de entrada no es válida para tipo uuid: «39696325-7668-499d-8682-add042d922a7324»"
       //Queria poner un IF aqui pero el finder de sequelize tiraba error y no llegaba a esta linea
-      return foundDogDb;
+
+      return filterDogById;
     }
 
     return foundDogApi;
   } catch {
-    throw new Error(`El id ${id} no corresponde a un personaje existente`);
+    throw new Error(`El id ${id} no corresponde a un perro existente`);
   }
 };
 
