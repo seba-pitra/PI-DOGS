@@ -107,7 +107,7 @@ const rootReducer = (state = initialState, action) => {
         dogs: filterDogs,
       };
     case ORDER_BY_ASCENDING_ALPHABETICAL_ORDER:
-      const ascendingOrder = state.allDogs.sort((a, b) => {
+      const ascendingOrder = state.dogs.sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
         return 0;
@@ -115,11 +115,10 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        allDogs: [...ascendingOrder],
         dogs: [...ascendingOrder],
       };
     case ORDER_BY_DESCENDING_ALPHABETICAL_ORDER:
-      const descendingOrder = state.allDogs.sort((a, b) => {
+      const descendingOrder = state.dogs.sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
         if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
         return 0;
@@ -127,7 +126,6 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        allDogs: [...descendingOrder],
         dogs: [...descendingOrder],
       };
     case ORDER_BY_HEAVIER_TO_LIGHTER:
