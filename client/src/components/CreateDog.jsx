@@ -3,6 +3,7 @@ import styles from "../stylesheets/CreateDog.module.css";
 import img from "../img/about-dog.avif";
 import * as actions from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CreateDog = (props) => {
   const [input, setInput] = useState({
@@ -12,7 +13,7 @@ const CreateDog = (props) => {
     minWeight: "",
     maxWeight: "",
     imgUrl: "",
-    lifeSpan: "",
+    life_span: "",
     temperaments: [],
     nameTempermants: [],
   });
@@ -104,10 +105,13 @@ const CreateDog = (props) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h1>Create tu propia raza</h1>
+      <Link to={"/home"} className={styles["form-back-link"]}>
+        {"<"} Back
+      </Link>
       <div className={styles["form-container"]}>
         <img src={img} alt="form-img" className={styles["form-img"]} />
         <div className={styles["all-inputs-container"]}>
+          <h1 className={styles["form-title"]}>Agrega o Crea tu propia raza</h1>
           <div className={styles["input-container"]}>
             <label htmlFor="name">Nombre *</label>
             <input
@@ -206,9 +210,9 @@ const CreateDog = (props) => {
             <input
               type="text"
               className={styles["form-input"]}
-              placeholder="10 - 15"
-              name="lifeSpan"
-              value={input.lifeSpan}
+              placeholder="10 years"
+              name="life_span"
+              value={input.life_span}
               onChange={handleInputChange}
             />
           </div>

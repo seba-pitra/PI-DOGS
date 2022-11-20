@@ -10,6 +10,16 @@
   }
 }
 
+@keyframes moveInHover {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(3px);
+  }
+}
+
 .home {
   overflow: hidden;
 }
@@ -51,10 +61,16 @@
 .home-selects {
   height: 30px;
   font-size: 20px;
-  background-color: transparent;
   border: none;
   border-bottom: solid 2px rgb(184, 182, 182);
   border-radius: 30px;
+  padding: 0 10px;
+}
+
+.home-selects:hover {
+  animation-name: moveInHover;
+  animation-duration: 0.5s;
+  cursor: pointer;
 }
 
 .reset-button {
@@ -70,4 +86,6 @@
 .reset-button:hover {
   cursor: pointer;
   background-color: rgb(37, 248, 69);
+  animation-name: moveInHover;
+  animation-duration: 0.5s;
 }
