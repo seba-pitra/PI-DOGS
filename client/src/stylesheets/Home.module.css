@@ -31,3 +31,43 @@
   background-color: #0a99ec;
   width: 100px;
 }
+
+.home-filters {
+  width: 900px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  align-items: center;
+}
+
+.home-select-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+}
+
+.home-selects {
+  height: 30px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 2px rgb(184, 182, 182);
+  border-radius: 30px;
+}
+
+.reset-button {
+  height: 40px;
+  width: 195px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(248, 248, 37);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.reset-button:hover {
+  cursor: pointer;
+  background-color: rgb(37, 248, 69);
+}

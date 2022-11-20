@@ -5,6 +5,16 @@ export const CREATE_DOG = "CREATE_DOG";
 // export const DELETE_DOG = "DELETE_DOG";
 export const SEARCH_RACE_NAME = "SEARCH_RACE_NAME";
 export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
+export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
+export const FILTER_BY_API_DOGS = "FILTER_BY_API_DOGS";
+export const FILTER_BY_DEFAULT_DOGS = "FILTER_BY_DEFAULT_DOGS";
+export const FILTER_BY_TEMPERAMENT = "FILTER_BY_TEMPERAMENT";
+export const ORDER_BY_HEAVIER_TO_LIGHTER = "ORDER_BY_HEAVIER_TO_LIGHTER";
+export const ORDER_BY_LIGHTER_TO_HEAVIER = "ORDER_BY_LIGHTER_TO_HEAVIER";
+export const ORDER_BY_ASCENDING_ALPHABETICAL_ORDER =
+  "ORDER_BY_ASCENDING_ALPHABETICAL_ORDER";
+export const ORDER_BY_DESCENDING_ALPHABETICAL_ORDER =
+  "ORDER_BY_DESCENDING_ALPHABETICAL_ORDER";
 
 //ACTIONS CREATORS
 export const getAllDogs = () => {
@@ -37,7 +47,6 @@ export const searchRaceName = (name) => {
   };
 };
 
-//lo hice asi nomas. Despues fijarse
 export const createDog = (dogInfo) => {
   return (dispatch) => {
     fetch("http://localhost:3001/dogs", {
@@ -46,8 +55,8 @@ export const createDog = (dogInfo) => {
       body: JSON.stringify(dogInfo),
     })
       .then((res) => res.json())
-      .then(() => {
-        dispatch({ type: CREATE_DOG, payload: dogInfo });
+      .then((data) => {
+        dispatch({ type: CREATE_DOG, payload: data });
       });
   };
 };
@@ -60,4 +69,36 @@ export const getTemperaments = () => {
         dispatch({ type: GET_ALL_TEMPERAMENTS, payload: data });
       });
   };
+};
+
+export const filterByCreated = () => {
+  return { type: FILTER_BY_CREATED };
+};
+
+export const filterByApiDogs = () => {
+  return { type: FILTER_BY_API_DOGS };
+};
+
+export const filterByDefaultDogs = () => {
+  return { type: FILTER_BY_DEFAULT_DOGS };
+};
+
+export const filterByTemperament = (temperament) => {
+  return { type: FILTER_BY_TEMPERAMENT, payload: temperament };
+};
+
+export const orderByDescendingAlphabeticalOrder = () => {
+  return { type: ORDER_BY_DESCENDING_ALPHABETICAL_ORDER };
+};
+
+export const orderByAscendingAlphabeticalOrder = () => {
+  return { type: ORDER_BY_ASCENDING_ALPHABETICAL_ORDER };
+};
+
+export const orderByHeavierToLighter = () => {
+  return { type: ORDER_BY_HEAVIER_TO_LIGHTER };
+};
+
+export const orderByLighterToHeavier = () => {
+  return { type: ORDER_BY_LIGHTER_TO_HEAVIER };
 };

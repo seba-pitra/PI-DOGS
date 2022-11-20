@@ -13,7 +13,6 @@ const createDog = async ({
   life_span,
   temperaments,
 }) => {
-  //le quite el life-span al condicional
   if (!name || !height || !weight) {
     throw new Error("Faltan enviar datos obligatorios");
   }
@@ -47,7 +46,7 @@ const getDogs = async () => {
       name: dog.name,
       life_span: dog.life_span,
       imgUrl: dog.image.url,
-      temperaments: [dog.temperament].join(","),
+      temperaments: [dog.temperament].join(", "),
       height: dog.height.metric + " cm",
       weight: dog.weight.metric + " kg",
     };
@@ -60,7 +59,7 @@ const getDogs = async () => {
   }
 
   //no me retorna dos arrays diferentes. Estan todos los dogs, de la api y la DB adentro del mismo array
-  return [...dbDogs, ...infoDogs];
+  return [...infoDogs, ...dbDogs];
 };
 
 const searchDogByName = async (name) => {
