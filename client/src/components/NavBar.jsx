@@ -32,11 +32,11 @@ const Nav = (props) => {
       </div>
       <div className={styles["page-links"]}>
         <Link to={"/home"}>Home</Link>
-        <Link to={"/about"}>Sobre Nosotros</Link>
-        <Link to={"/dogs/create"}>Crea tu raza</Link>
+        <Link to={"/about"}>About me</Link>
+        <Link to={"/dogs/create"}>Create your breed</Link>
         <input
           type="text"
-          placeholder="Busca tu perro..."
+          placeholder="Search your breed..."
           onChange={changeHandler}
         />
       </div>

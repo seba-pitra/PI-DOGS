@@ -111,9 +111,9 @@ const CreateDog = (props) => {
       <div className={styles["form-container"]}>
         <img src={img} alt="form-img" className={styles["form-img"]} />
         <div className={styles["all-inputs-container"]}>
-          <h1 className={styles["form-title"]}>Agrega o Crea tu propia raza</h1>
+          <h1 className={styles["form-title"]}>Add or create your own breed</h1>
           <div className={styles["input-container"]}>
-            <label htmlFor="name">Nombre *</label>
+            <label htmlFor="name">Name *</label>
             <input
               type="text"
               className={(errors.name && styles.danger) || styles["form-input"]}
@@ -128,13 +128,13 @@ const CreateDog = (props) => {
           </div>
           <div className={styles["height-input-container"]}>
             <div className={styles["input-container"]}>
-              <label htmlFor="minHeight">Altura minima*</label>
+              <label htmlFor="minHeight">Min Height {"(cm)"} *</label>
               <input
                 type="number"
                 className={
                   (errors.height && styles.danger) || styles["form-input"]
                 }
-                placeholder="30 - 40"
+                placeholder="5"
                 name="minHeight"
                 value={input.minHeight}
                 onChange={handleInputChange}
@@ -144,13 +144,13 @@ const CreateDog = (props) => {
               )}
             </div>
             <div className={styles["input-container"]}>
-              <label htmlFor="maxHeight">Altura maxima *</label>
+              <label htmlFor="maxHeight">Max Height {"(cm)"} *</label>
               <input
                 type="number"
                 className={
                   (errors.height && styles.danger) || styles["form-input"]
                 }
-                placeholder="30 - 40"
+                placeholder="30"
                 name="maxHeight"
                 value={input.maxHeight}
                 onChange={handleInputChange}
@@ -162,13 +162,13 @@ const CreateDog = (props) => {
           </div>
           <div className={styles["weight-input-container"]}>
             <div className={styles["input-container"]}>
-              <label htmlFor="minWeight">Peso minimo*</label>
+              <label htmlFor="minWeight">Min Weight {"(kg)"} *</label>
               <input
                 type="text"
                 className={
                   (errors.weight && styles.danger) || styles["form-input"]
                 }
-                placeholder="10 - 15"
+                placeholder="10"
                 name="minWeight"
                 value={input.weight}
                 onChange={handleInputChange}
@@ -178,7 +178,7 @@ const CreateDog = (props) => {
               )}
             </div>
             <div className={styles["input-container"]}>
-              <label htmlFor="maxWeight">Peso maximo*</label>
+              <label htmlFor="maxWeight">Max Weight {"(kg)"} *</label>
               <input
                 type="text"
                 className={
@@ -206,7 +206,7 @@ const CreateDog = (props) => {
             />
           </div>
           <div className={styles["input-container"]}>
-            <label htmlFor="life-span">Esperanza de vida</label>
+            <label htmlFor="life-span">Life Span</label>
             <input
               type="text"
               className={styles["form-input"]}
@@ -217,7 +217,7 @@ const CreateDog = (props) => {
             />
           </div>
           <div className={styles["select-container"]}>
-            <label htmlFor="select">Selecciona temperamentos</label>
+            <label htmlFor="select">Choose Temperaments</label>
             <select
               className={styles["form-select"]}
               name="select"
@@ -249,7 +249,7 @@ const CreateDog = (props) => {
             }
             className={styles["form-button"]}
           >
-            Crear
+            Create
           </button>
         </div>
       </div>

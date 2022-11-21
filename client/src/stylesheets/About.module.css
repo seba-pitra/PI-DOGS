@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  font-size: 18px;
 }
 
 .my-links {
@@ -55,6 +56,7 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 20px;
+  font-size: 30px;
 }
 
 .my-link {
@@ -63,13 +65,13 @@
 }
 
 .linkedin-logo {
-  height: 30px;
+  height: 47px;
   margin-left: -4px;
   margin-right: 6px;
 }
 
 .github-logo {
-  height: 23px;
+  height: 40px;
 }
 
 .github-text {

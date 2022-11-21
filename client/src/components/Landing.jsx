@@ -11,8 +11,8 @@ const Landing = (props) => {
         <div className={style["landing-container"]}>
           <div className={style["landing-left-container"]}>
             <div className={style["text-container"]}>
-              <h1 className={style["landing-title"]}>Bienvenido</h1>
-              <p>¡Conoce nuevas razas de perros!</p>
+              <h1 className={style["landing-title"]}>Welcome!</h1>
+              <p>Discover new breeds of dogs</p>
             </div>
             <img
               src={imgHappyDogs}
@@ -20,7 +20,7 @@ const Landing = (props) => {
               className={style["landing-happy-dogs-img"]}
             />
             <Link to={"/home"}>
-              <button className={style["landing-button"]}>¡Hagamoslo!</button>
+              <button className={style["landing-button"]}>Let's Go!</button>
             </Link>
           </div>
           <img src={img} alt="landing-dog" className={style["landing-img"]} />

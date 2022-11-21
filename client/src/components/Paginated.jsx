@@ -5,25 +5,18 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
   const totalPageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
+    //le hago el math ceil por que la division esa me da 21.75, lo redondeo para arriba
     totalPageNumbers.push(i);
   }
 
   const pagesNumbers = totalPageNumbers.map((pageNum) => {
-    //si la page que se itera es la pagina actual se tiñe de color
-    if (pageNum === currentPage) {
-      return (
-        <h1
-          className={styles["current-page"]}
-          onClick={() => paginated(pageNum)}
-        >
-          {pageNum}
-        </h1>
-      );
-    }
-
     return (
       <h1
-        className={styles["paginated-title"]}
+        className={
+          pageNum === currentPage
+            ? styles["current-page"]
+            : styles["paginated-title"]
+        }
         onClick={() => paginated(pageNum)}
       >
         {pageNum}
@@ -31,8 +24,10 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
     );
   });
 
-  let splicePagesNumber = //solo se muestras 12 paginas
+  let slicePagesNumber = //solo se muestras 12 paginas
     currentPage < 12 ? pagesNumbers.slice(0, 11) : pagesNumbers.slice(11);
+
+  console.log("splice", slicePagesNumber);
 
   const nextButtonHandler = () => {
     const totalElements = allDogs.length;
@@ -47,7 +42,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
     }
 
     if (currentPage > 10) {
-      splicePagesNumber = pagesNumbers.slice(11);
+      slicePagesNumber = pagesNumbers.slice(11);
     }
   };
 
@@ -55,7 +50,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
     const prevPage = currentPage - 1;
 
     if (currentPage < 11) {
-      splicePagesNumber = pagesNumbers.slice(0, 11);
+      slicePagesNumber = pagesNumbers.slice(0, 11);
     }
 
     if (currentPage > 1) {
@@ -73,7 +68,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
         >
           PREV
         </button>
-        {splicePagesNumber}
+        {slicePagesNumber}
         <button
           onClick={nextButtonHandler}
           className={styles["paginated-button"]}

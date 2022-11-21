@@ -14,14 +14,14 @@ const createDog = async ({
   temperaments,
 }) => {
   if (!name || !height || !weight) {
-    throw new Error("Faltan enviar datos obligatorios");
+    throw new Error("Mandatory fields are missing");
   }
 
   const foundDog = await Dog.findOne({ where: { name } });
 
   //si se encuentra algo...
   if (foundDog) {
-    throw new Error("Ya existe un raza de perro con ese nombre");
+    throw new Error("There is already a breed of dog with this name");
   }
 
   const newDog = await Dog.create({
@@ -55,7 +55,7 @@ const getDogs = async () => {
   const dbDogs = await Dog.findAll({ include: Temperament }); //incluye los datos de la tabla intermedia
 
   if (!infoDogs && !dbDogs) {
-    throw new Error("No se encontró ningún perro");
+    throw new Error("No dog found");
   }
 
   //no me retorna dos arrays diferentes. Estan todos los dogs, de la api y la DB adentro del mismo array
@@ -72,7 +72,7 @@ const searchDogByName = async (name) => {
     const dbDogs = await Dog.findAll({ where: { name } });
 
     if (!dbDogs.length) {
-      throw new Error("No se encontró ningún raza de perro con ese nombre");
+      throw new Error("No dog breed with this name was found");
     }
 
     return dbDogs;
@@ -101,7 +101,7 @@ const searchDogById = async (id) => {
 
     return foundDogApi;
   } catch {
-    throw new Error(`El id ${id} no corresponde a un perro existente`);
+    throw new Error(`Id: ${id} does not correspond to an existing dog`);
   }
 };
 
@@ -109,13 +109,13 @@ const updateDog = async (attribute, value, dogId) => {
   //Quiero usar esto para cambiar el nombre o peso o altura que EL CLIENTE CREA
   if (!isNaN(dogId)) {
     //si es un numero...
-    throw new Error("El id no es de tipo UUID");
+    throw new Error("The id is not of type UUID");
   }
 
   const foundDog = await Dog.findByPk(dogId);
 
   if (!foundDog) {
-    throw new Error("No se encontró ningun perro");
+    throw new Error("No dog found");
   }
 
   const updatedDog = await foundDog.update({ [attribute]: value });
@@ -127,7 +127,7 @@ const deleteDog = async (id) => {
   const foundDog = await Dog.findByPk(id);
 
   if (!foundDog) {
-    throw new Error("No se ha encontrado ningun perrito con ese nombre");
+    throw new Error("No dog found");
   }
 
   const name = foundDog.name;

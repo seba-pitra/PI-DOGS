@@ -17,8 +17,9 @@ const DogDetail = ({ match }) => {
 
   let mappedTemperaments;
   if (typeof dog.temperaments !== "string") {
+    //estos son para los detalles de los perros de la base de datos
     mappedTemperaments =
-      dog.temperaments && dog.temperaments.map((d) => d.name).join(",");
+      dog.temperaments && dog.temperaments.map((d) => d.name);
   }
 
   return (
@@ -29,14 +30,27 @@ const DogDetail = ({ match }) => {
         <img src={dog.imgUrl} alt="" className={styles["dog-detail-img"]} />
 
         <div className={styles["dog-detail-description"]}>
-          <span className={styles["dog-detail-temperaments"]}>
-            {typeof dog.temperaments === "string"
-              ? dog.temperaments
-              : mappedTemperaments}
-          </span>
-          <span className={styles["dog-detail-span"]}>{dog.height}</span>
-          <span className={styles["dog-detail-span"]}>{dog.weight}</span>
-          <span className={styles["dog-detail-span"]}>{dog.life_span}</span>
+          <div className={styles["dog-description-left"]}>
+            This dog breed has the next temperaments: <br />
+            <span className={styles["dog-detail-temperaments"]}>
+              {/* {dog.temperaments} */}
+              {typeof dog.temperaments === "string"
+                ? dog.temperaments
+                    .split(",")
+                    .map((temp) => (
+                      <span className={styles.temperament}>{temp}</span>
+                    ))
+                : mappedTemperaments &&
+                  mappedTemperaments.map((temp) => (
+                    <span className={styles.temperament}>{temp}</span>
+                  ))}
+            </span>
+          </div>
+          <div className={styles["dog-description-right"]}>
+            <span className={styles["dog-detail-span"]}>{dog.height}</span>
+            <span className={styles["dog-detail-span"]}>{dog.weight}</span>
+            <span className={styles["dog-detail-span"]}>{dog.life_span}</span>
+          </div>
         </div>
       </div>
     </div>

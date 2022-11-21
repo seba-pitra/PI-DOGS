@@ -6,7 +6,7 @@ const { getDogs } = require("./dogsControllers");
 //X Este controller debe separar todos los temperamentos de los perros
 //que estan mal hechos en la API
 //cuando los separo por coma algunos quedan asi:
-//'Trainable,Stubborn'
+//['Trainable,Stubborn', 'adaptable']
 //ver como solucionarlo.
 
 //X Despues guardar todo en la base de datos y trabajar, luego, solo con los datos de la DB
@@ -45,7 +45,7 @@ const getTemperaments = async () => {
     let dbTemperaments = await Temperament.bulkCreate(mappedTemps);
 
     if (!dbTemperaments.length) {
-      throw new Error("No se han podido obtener los temperamentos");
+      throw new Error("No temperaments were obtained");
     }
 
     return dbTemperaments;

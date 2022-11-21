@@ -24,10 +24,12 @@ const About = () => {
       </div>
       <div className={styles["about-me-container"]}>
         <div className={styles["about-me-text-container"]}>
-          <h2>¡Hola!</h2>
-          <p>Espero que hayas disfrutado esta pagina</p>
+          <h2>Hello!</h2>
+          <p>I hope you have enjoyed this app</p>
           <p>
-            Si quieres saber mas de mi, este es mi correo electronico: <br />
+            If you want to know more about me, you can send me a message to my
+            e-mail:
+            <br />
             sebastian.pitra10@gmail.com
           </p>
         </div>
@@ -38,7 +40,11 @@ const About = () => {
               alt="link-logo"
               className={styles["linkedin-logo"]}
             />
-            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-pitra-97b5b7248/">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/sebasti%C3%A1n-pitra-97b5b7248/"
+            >
               Linkedin
             </a>
           </div>
@@ -49,6 +55,8 @@ const About = () => {
               className={styles["github-logo"]}
             />
             <a
+              target="_blank"
+              rel="noreferrer"
               href="https://github.com/seba-pitra"
               className={styles["github-text"]}
             >
