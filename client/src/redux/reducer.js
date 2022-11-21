@@ -24,6 +24,7 @@ const initialState = {
   dogDetail: {},
   formError: "",
   allTemperaments: [],
+  orderByWeight: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -33,6 +34,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allDogs: action.payload,
         dogs: action.payload,
+        dogDetail: {},
       };
     case CREATE_DOG:
       return {
@@ -64,12 +66,12 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_BY_CREATED:
       return {
         ...state,
-        dogs: state.dogs.filter((dog) => isNaN(dog.id)),
+        dogs: state.allDogs.filter((dog) => isNaN(dog.id)),
       };
     case FILTER_BY_API_DOGS:
       return {
         ...state,
-        dogs: state.dogs.filter((dog) => !isNaN(dog.id)),
+        dogs: state.allDogs.filter((dog) => !isNaN(dog.id)),
       };
     case FILTER_BY_DEFAULT_DOGS:
       return {

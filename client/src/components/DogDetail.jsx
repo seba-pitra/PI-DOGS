@@ -33,16 +33,17 @@ const DogDetail = ({ match }) => {
           <div className={styles["dog-description-left"]}>
             This dog breed has the next temperaments: <br />
             <span className={styles["dog-detail-temperaments"]}>
-              {/* {dog.temperaments} */}
               {typeof dog.temperaments === "string"
-                ? dog.temperaments
-                    .split(",")
-                    .map((temp) => (
-                      <span className={styles.temperament}>{temp}</span>
-                    ))
+                ? dog.temperaments.split(",").map((temp) => (
+                    <span className={styles.temperament} key={temp}>
+                      {temp}
+                    </span>
+                  ))
                 : mappedTemperaments &&
                   mappedTemperaments.map((temp) => (
-                    <span className={styles.temperament}>{temp}</span>
+                    <span className={styles.temperament} key={temp}>
+                      {temp}
+                    </span>
                   ))}
             </span>
           </div>
