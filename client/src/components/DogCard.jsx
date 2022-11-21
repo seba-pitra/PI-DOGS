@@ -15,7 +15,7 @@ const DogCard = ({ name, imgUrl, id }) => {
     <div className={styles["Dog-card"]}>
       <Link to={`/dog/${id}`} onClick={handleClick}>
         <div className={styles["Dog-card-container"]}>
-          <p className={styles["Dog-card-link"]}>¡Mira los detalles!</p>
+          <p className={styles["Dog-card-link"]}>Know more!</p>
           <img
             src={imgUrl}
             alt="img-dog-card"

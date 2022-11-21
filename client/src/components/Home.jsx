@@ -113,6 +113,7 @@ const Home = () => {
             onChange={handleOrderByWeight}
             className={styles["home-selects"]}
           >
+            <option>Weight</option>
             <option>Heaver to Lighter</option>
             <option>Lighter to Heaver</option>
           </select>

@@ -4,6 +4,10 @@ import styles from "../stylesheets/Paginated.module.css";
 const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
   const totalPageNumbers = [];
 
+  const [limitNumbersPage, setLimitNumbersPage] = useState(10);
+  const [minLimitNumberPage, setMinLimitNumberPage] = useState(0);
+  const [maxLimitNumberPage, setMaxLimitNumberPage] = useState(10);
+
   for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
     //le hago el math ceil por que la division esa me da 21.75, lo redondeo para arriba
     totalPageNumbers.push(i);
@@ -24,39 +28,35 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
     );
   });
 
-  let slicePagesNumber = //solo se muestras 12 paginas
-    currentPage < 12 ? pagesNumbers.slice(0, 11) : pagesNumbers.slice(11);
-
-  console.log("splice", slicePagesNumber);
+  const slicePagesNumber = pagesNumbers.slice(
+    minLimitNumberPage,
+    maxLimitNumberPage
+  );
 
   const nextButtonHandler = () => {
-    const totalElements = allDogs.length;
     const nextPage = currentPage + 1;
-    const firstIndex = nextPage * dogsPerPage;
 
-    if (firstIndex === totalElements) return; //si el index es igual al total es xq llego al final de la pagina
+    if (nextPage > pagesNumbers.length) return; //si el index es igual al total es xq llego al final de la pagina
 
-    if (currentPage < 22) {
-      //mas de la pagina 22 no va a pasar
-      paginated(nextPage);
+    if (currentPage + 1 > maxLimitNumberPage) {
+      setMaxLimitNumberPage(maxLimitNumberPage + limitNumbersPage);
+      setMinLimitNumberPage(minLimitNumberPage + limitNumbersPage);
     }
 
-    if (currentPage > 10) {
-      slicePagesNumber = pagesNumbers.slice(11);
-    }
+    paginated(nextPage);
   };
 
   const prevButtonHandler = () => {
     const prevPage = currentPage - 1;
 
-    if (currentPage < 11) {
-      slicePagesNumber = pagesNumbers.slice(0, 11);
+    if (prevPage === 0) return;
+
+    if ((currentPage - 1) % limitNumbersPage === 0) {
+      setMaxLimitNumberPage(maxLimitNumberPage - limitNumbersPage);
+      setMinLimitNumberPage(minLimitNumberPage - limitNumbersPage);
     }
 
-    if (currentPage > 1) {
-      //menos de la pagina 1 no va a ir
-      paginated(prevPage);
-    }
+    paginated(prevPage);
   };
 
   return (
