@@ -15,13 +15,15 @@ const CreateDog = (props) => {
     imgUrl: "",
     life_span: "",
     temperaments: [],
-    nameTempermants: [],
+    nameTemperaments: [],
   });
 
   const [errors, setErrors] = useState({
     name: "",
-    height: "",
-    weight: "",
+    minHeight: "",
+    maxHeight: "",
+    minWeight: "",
+    maxWeight: "",
   });
 
   const validate = (input) => {
@@ -34,19 +36,19 @@ const CreateDog = (props) => {
     }
 
     if (!input.minHeight) {
-      errors.height = "* min Height is required";
+      errors.minHeight = "* min Height is required";
     }
 
     if (!input.maxHeight) {
-      errors.height = "* max Height is required";
+      errors.maxHeight = "* max Height is required";
     }
 
     if (!input.minWeight) {
-      errors.weight = "* Weight is required";
+      errors.minWeight = "*min Weight is required";
     }
 
     if (!input.maxWeight) {
-      errors.weight = "* Weight is required";
+      errors.maxWeight = "*max Weight is required";
     }
 
     return errors;
@@ -79,7 +81,23 @@ const CreateDog = (props) => {
     setInput({
       ...input,
       temperaments: [...input.temperaments, foundTemp.id],
-      nameTempermants: [...input.nameTempermants, inputTemperament],
+      nameTemperaments: [...input.nameTemperaments, inputTemperament],
+    });
+  };
+
+  const handleDeleteTemperament = (temperament) => {
+    const foundTemperament = allTemperaments.find(
+      (temp) => temp.name === temperament
+    );
+
+    setInput({
+      ...input,
+      temperaments: input.temperaments.filter(
+        (temp) => temp !== foundTemperament.id
+      ),
+      nameTemperaments: input.nameTemperaments.filter(
+        (temp) => temp !== foundTemperament.name
+      ),
     });
   };
 
@@ -103,6 +121,12 @@ const CreateDog = (props) => {
 
   const allTemperaments = useSelector((state) => state.allTemperaments);
 
+  const formError = useSelector((state) =>
+    state.formError.includes("Validation error:")
+      ? state.formError.split("Validation error:")[1]
+      : state.formError
+  );
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <Link to={"/home"} className={styles["form-back-link"]}>
@@ -122,9 +146,8 @@ const CreateDog = (props) => {
               onChange={handleInputChange}
             />
             {errors.name && (
-              <p className={styles["form-error-input"]}>{errors.name}</p>
+              <p className={styles["form-error-name-input"]}>{errors.name}</p>
             )}
-            {/* se muestar el string que tengo guardado en errors */}
           </div>
           <div className={styles["height-input-container"]}>
             <div className={styles["input-container"]}>
@@ -132,15 +155,15 @@ const CreateDog = (props) => {
               <input
                 type="number"
                 className={
-                  (errors.height && styles.danger) || styles["form-input"]
+                  (errors.minHeight && styles.danger) || styles["form-input"]
                 }
                 placeholder="5"
                 name="minHeight"
                 value={input.minHeight}
                 onChange={handleInputChange}
               />
-              {errors.height && (
-                <p className={styles["form-error-input"]}>{errors.height}</p>
+              {errors.minHeight && (
+                <p className={styles["form-error-input"]}>{errors.minHeight}</p>
               )}
             </div>
             <div className={styles["input-container"]}>
@@ -148,15 +171,15 @@ const CreateDog = (props) => {
               <input
                 type="number"
                 className={
-                  (errors.height && styles.danger) || styles["form-input"]
+                  (errors.maxHeight && styles.danger) || styles["form-input"]
                 }
                 placeholder="30"
                 name="maxHeight"
                 value={input.maxHeight}
                 onChange={handleInputChange}
               />
-              {errors.height && (
-                <p className={styles["form-error-input"]}>{errors.height}</p>
+              {errors.maxHeight && (
+                <p className={styles["form-error-input"]}>{errors.maxHeight}</p>
               )}
             </div>
           </div>
@@ -164,33 +187,33 @@ const CreateDog = (props) => {
             <div className={styles["input-container"]}>
               <label htmlFor="minWeight">Min Weight {"(kg)"} *</label>
               <input
-                type="text"
+                type="number"
                 className={
-                  (errors.weight && styles.danger) || styles["form-input"]
+                  (errors.minWeight && styles.danger) || styles["form-input"]
                 }
-                placeholder="10"
+                placeholder="5"
                 name="minWeight"
                 value={input.weight}
                 onChange={handleInputChange}
               />
-              {errors.weight && (
-                <p className={styles["form-error-input"]}>{errors.weight}</p>
+              {errors.minWeight && (
+                <p className={styles["form-error-input"]}>{errors.minWeight}</p>
               )}
             </div>
             <div className={styles["input-container"]}>
               <label htmlFor="maxWeight">Max Weight {"(kg)"} *</label>
               <input
-                type="text"
+                type="number"
                 className={
-                  (errors.weight && styles.danger) || styles["form-input"]
+                  (errors.maxWeight && styles.danger) || styles["form-input"]
                 }
-                placeholder="10 - 15"
+                placeholder="15"
                 name="maxWeight"
                 value={input.maxWeight}
                 onChange={handleInputChange}
               />
-              {errors.weight && (
-                <p className={styles["form-error-input"]}>{errors.weight}</p>
+              {errors.maxWeight && (
+                <p className={styles["form-error-input"]}>{errors.maxWeight}</p>
               )}
             </div>
           </div>
@@ -224,17 +247,33 @@ const CreateDog = (props) => {
               onChange={handleSelect}
             >
               {allTemperaments.map((temp) => (
-                <option className={styles["input-container"]} value={temp.name}>
+                <option
+                  className={styles["input-container"]}
+                  value={temp.name}
+                  key={temp.name}
+                >
                   {temp.name}
                 </option>
               ))}
             </select>
             <div className={styles["chosen-temperaments"]}>
-              {input.nameTempermants.map((temp) => (
-                <p className={styles["name-temperaments"]}>{temp}</p>
+              {input.nameTemperaments.map((temp) => (
+                <div className={styles["name-temperaments"]}>
+                  <p>{temp}</p>
+                  <button
+                    className={styles["delete-temperament"]}
+                    type="button"
+                    onClick={() => handleDeleteTemperament(temp)}
+                  >
+                    X
+                  </button>
+                </div>
               ))}
             </div>
           </div>
+          {formError && (
+            <p className={styles["form-error-input"]}>{formError}</p>
+          )}
           <button
             type="submit"
             disabled={

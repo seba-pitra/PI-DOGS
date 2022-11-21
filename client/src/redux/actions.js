@@ -1,6 +1,7 @@
 export const GET_ALL_DOGS = "GET_ALL_DOGS";
 export const GET_DOG_DETAIL = "GET_DOG_DETAIL";
 export const CREATE_DOG = "CREATE_DOG";
+export const ERROR_CREATE_DOG = "ERROR_CREATE_DOG";
 // export const UPDATE_DOG = "UPDATE_DOG";
 // export const DELETE_DOG = "DELETE_DOG";
 export const SEARCH_RACE_NAME = "SEARCH_RACE_NAME";
@@ -16,7 +17,6 @@ export const ORDER_BY_ASCENDING_ALPHABETICAL_ORDER =
 export const ORDER_BY_DESCENDING_ALPHABETICAL_ORDER =
   "ORDER_BY_DESCENDING_ALPHABETICAL_ORDER";
 
-//ACTIONS CREATORS
 export const getAllDogs = () => {
   return (dispatch) => {
     fetch("http://localhost:3001/dogs")
@@ -54,9 +54,18 @@ export const createDog = (dogInfo) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dogInfo),
     })
-      .then((res) => res.json())
+      .then((res) =>
+        res.ok
+          ? res.json()
+          : res.text().then((err) => {
+              throw new Error(err);
+            })
+      )
       .then((data) => {
         dispatch({ type: CREATE_DOG, payload: data });
+      })
+      .catch((err) => {
+        dispatch({ type: ERROR_CREATE_DOG, payload: err.message });
       });
   };
 };

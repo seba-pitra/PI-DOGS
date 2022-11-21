@@ -94,7 +94,9 @@ const Home = () => {
             className={styles["home-selects"]}
           >
             {allTemperaments &&
-              allTemperaments.map((temp) => <option>{temp.name}</option>)}
+              allTemperaments.map((temp) => (
+                <option key={temp.name}>{temp.name}</option>
+              ))}
           </select>
         </div>
         Order by:

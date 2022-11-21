@@ -1,7 +1,6 @@
 const { API_KEY } = process.env;
 const fetch = require("node-fetch");
 const { Dog, Temperament } = require("../db");
-// const { getTemperaments } = require("./temperamentsControllers.js");
 
 const urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}}`;
 
@@ -19,7 +18,6 @@ const createDog = async ({
 
   const foundDog = await Dog.findOne({ where: { name } });
 
-  //si se encuentra algo...
   if (foundDog) {
     throw new Error("There is already a breed of dog with this name");
   }
@@ -58,7 +56,6 @@ const getDogs = async () => {
     throw new Error("No dog found");
   }
 
-  //no me retorna dos arrays diferentes. Estan todos los dogs, de la api y la DB adentro del mismo array
   return [...infoDogs, ...dbDogs];
 };
 

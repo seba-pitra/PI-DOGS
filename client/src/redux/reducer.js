@@ -3,6 +3,7 @@ import {
   GET_DOG_DETAIL,
   SEARCH_RACE_NAME,
   CREATE_DOG,
+  ERROR_CREATE_DOG,
   GET_ALL_TEMPERAMENTS,
   FILTER_BY_CREATED,
   FILTER_BY_API_DOGS,
@@ -21,6 +22,7 @@ const initialState = {
   allDogs: [],
   dogs: [],
   dogDetail: {},
+  formError: "",
   allTemperaments: [],
 };
 
@@ -37,6 +39,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allDogs: [action.payload, ...state.allDogs],
         dogs: [action.payload, ...state.allDogs],
+      };
+    case ERROR_CREATE_DOG:
+      return {
+        ...state,
+        formError: action.payload,
       };
     case GET_DOG_DETAIL:
       return {
@@ -57,12 +64,12 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_BY_CREATED:
       return {
         ...state,
-        dogs: state.allDogs.filter((dog) => isNaN(dog.id)),
+        dogs: state.dogs.filter((dog) => isNaN(dog.id)),
       };
     case FILTER_BY_API_DOGS:
       return {
         ...state,
-        dogs: state.allDogs.filter((dog) => !isNaN(dog.id)),
+        dogs: state.dogs.filter((dog) => !isNaN(dog.id)),
       };
     case FILTER_BY_DEFAULT_DOGS:
       return {

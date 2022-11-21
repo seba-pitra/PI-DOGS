@@ -16,6 +16,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
   const pagesNumbers = totalPageNumbers.map((pageNum) => {
     return (
       <h1
+        key={pageNum}
         className={
           pageNum === currentPage
             ? styles["current-page"]
