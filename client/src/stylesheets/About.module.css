@@ -31,7 +31,8 @@
 
 .about-img {
   height: 500px;
-  border-radius: 30px;
+  border-radius: 100px;
+  padding-top: -30px;
 }
 
 .about-me-container {

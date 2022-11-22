@@ -24,7 +24,9 @@ const DogDetail = ({ match }) => {
 
   return (
     <div className={styles["dog-detail"]}>
-      <Link to={"/home"}>{"<"}</Link>
+      <Link to={"/home"} className={styles["back-link"]}>
+        {"<"} Back
+      </Link>
       <div className={styles["dog-detail-container"]}>
         <h2 className={styles["dog-detail-title"]}>{dog.name}</h2>
         <img src={dog.imgUrl} alt="" className={styles["dog-detail-img"]} />

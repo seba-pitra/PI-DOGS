@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../stylesheets/About.module.css";
-import img from "../img/about-dog.avif";
+import myImg from "../img/my-profile.png";
 import linkedinImg from "../img/logo-linkedin-blanco.jpg";
 import githubLogo from "../img/github-logo.jpg";
 import Nav from "./NavBar";
@@ -11,21 +11,19 @@ const About = () => {
     <div className={styles.about}>
       <Nav />
       <div className={styles["about-container"]}>
-        <img src={img} alt="about-dog" className={styles["about-img"]} />
+        <img src={myImg} alt="about-dog" className={styles["about-img"]} />
         <span className={styles["about-description"]}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto
-          aliquam iste veniam illum. Unde modi aut, facilis, repellendus
-          dignissimos explicabo ipsa voluptatum in quam quis natus quisquam
-          soluta. Aspernatur, perspiciatis! Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Esse labore praesentium quod provident,
-          excepturi ex ipsum consequuntur odio? Nihil illum nam velit eaque
-          adipisci impedit laudantium, voluptate sit explicabo deleniti.
+          Hello! My name is Sebastian. I'm a passionate full stack developer and
+          this was my first single page app. This project was made with: <br />
+          ·PostgresSQL <br /> ·Express <br /> ·React <br /> ·Redux
+          <br /> ·CSS modules <br />
+          My goal was that all users can have the best experience looking for
+          dog breeds and enjoy creating one breed or their own dog.
         </span>
       </div>
       <div className={styles["about-me-container"]}>
         <div className={styles["about-me-text-container"]}>
-          <h2>Hello!</h2>
-          <p>I hope you have enjoyed this app</p>
+          <h2>I hope you have enjoyed this app</h2>
           <p>
             If you want to know more about me, you can send me a message to my
             e-mail:
