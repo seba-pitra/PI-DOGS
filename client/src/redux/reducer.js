@@ -13,9 +13,6 @@ import {
   ORDER_BY_DESCENDING_ALPHABETICAL_ORDER,
   ORDER_BY_HEAVIER_TO_LIGHTER,
   ORDER_BY_LIGHTER_TO_HEAVIER,
-  // UPDATE_DOG,
-  // DELETE_DOG,
-  //DESPUES AGREGAR MAS
 } from "./actions.js";
 
 const initialState = {
