@@ -38,6 +38,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allDogs: [action.payload, ...state.allDogs],
         dogs: [action.payload, ...state.allDogs],
+        formError: "",
       };
     case ERROR_CREATE_DOG:
       return {

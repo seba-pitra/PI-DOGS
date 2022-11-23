@@ -28,7 +28,7 @@
 }
 
 .form-back-link:hover {
-  background-color: rgb(37, 248, 69);
+  background-color: #c17aff;
   cursor: pointer;
 }
 
@@ -78,7 +78,6 @@
 .form-error-name-input {
   margin: 0;
   color: rgb(150, 4, 4);
-  /* margin-left: 100px; */
 }
 
 .form-error-input {
@@ -136,6 +135,16 @@
 .delete-temperament:hover {
   background-color: rgb(50, 49, 49);
   cursor: pointer;
+}
+
+.form-error-back {
+  margin: 10px;
+  padding: 3px 20px;
+  margin-left: 100px;
+  width: fit-content;
+  border-radius: 30px;
+  background-color: rgb(240, 30, 30);
+  color: black;
 }
 
 .form-button {

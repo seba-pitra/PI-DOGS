@@ -272,7 +272,7 @@ const CreateDog = (props) => {
             </div>
           </div>
           {formError && (
-            <p className={styles["form-error-input"]}>{formError}</p>
+            <p className={styles["form-error-back"]}>{formError}</p>
           )}
           <button
             type="submit"

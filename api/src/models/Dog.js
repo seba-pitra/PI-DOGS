@@ -2,7 +2,6 @@ const { DataTypes } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define(
     "dog",
     {
@@ -76,13 +75,6 @@ module.exports = (sequelize) => {
       },
       imgUrl: {
         type: DataTypes.STRING,
-        validate: {
-          customValidator(imgUrl) {
-            if (!isNaN(imgUrl)) {
-              throw new Error("Image url must not be a number");
-            }
-          },
-        },
       },
     },
     {

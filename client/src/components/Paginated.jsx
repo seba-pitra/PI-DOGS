@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import styles from "../stylesheets/Paginated.module.css";
 
 const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
-  const totalPageNumbers = [];
-
   const [limitNumbersPage, setLimitNumbersPage] = useState(10);
   const [minLimitNumberPage, setMinLimitNumberPage] = useState(0);
   const [maxLimitNumberPage, setMaxLimitNumberPage] = useState(10);
 
+  const totalPageNumbers = [];
   for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
     //le hago el math ceil por que la division esa me da 21.75, lo redondeo para arriba
     totalPageNumbers.push(i);
@@ -39,7 +38,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
 
     if (nextPage > pagesNumbers.length) return; //si el index es igual al total es xq llego al final de la pagina
 
-    if (currentPage + 1 > maxLimitNumberPage) {
+    if (nextPage > maxLimitNumberPage) {
       setMaxLimitNumberPage(maxLimitNumberPage + limitNumbersPage);
       setMinLimitNumberPage(minLimitNumberPage + limitNumbersPage);
     }
@@ -52,7 +51,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
 
     if (prevPage === 0) return;
 
-    if ((currentPage - 1) % limitNumbersPage === 0) {
+    if (prevPage % limitNumbersPage === 0) {
       setMaxLimitNumberPage(maxLimitNumberPage - limitNumbersPage);
       setMinLimitNumberPage(minLimitNumberPage - limitNumbersPage);
     }
