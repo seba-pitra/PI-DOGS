@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as actions from "../redux/actions.js";
 import styles from "../stylesheets/DogCard.module.css";
 

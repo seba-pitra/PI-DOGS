@@ -26,9 +26,9 @@ const CreateDog = (props) => {
     maxWeight: "",
   });
 
+  const [successfullyCreated, setSuccessfullyCreated] = useState("");
+
   const validate = (input) => {
-    //si tiene un error lo setea en el estao local "errors" de la linea 13.
-    //Esto se ejecuta en la linea 47, "setErrors(validate())"
     let errors = {};
 
     if (!input.name) {
@@ -111,6 +111,8 @@ const CreateDog = (props) => {
     };
 
     dispatch(actions.createDog(dispatchInput));
+
+    setTimeout(() => setSuccessfullyCreated("Successfully created"), 2000);
   };
 
   const dispatch = useDispatch();
@@ -273,6 +275,11 @@ const CreateDog = (props) => {
           </div>
           {formError && (
             <p className={styles["form-error-back"]}>{formError}</p>
+          )}
+          {!formError && successfullyCreated && (
+            <p className={styles["form-succesfully-created"]}>
+              {successfullyCreated}
+            </p>
           )}
           <button
             type="submit"

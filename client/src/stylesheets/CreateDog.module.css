@@ -140,11 +140,19 @@
 .form-error-back {
   margin: 10px;
   padding: 3px 20px;
-  margin-left: 100px;
   width: fit-content;
   border-radius: 30px;
   background-color: rgb(240, 30, 30);
   color: black;
+}
+
+.form-succesfully-created {
+  margin: 10px;
+  padding: 3px 20px;
+  width: fit-content;
+  border-radius: 30px;
+  background-color: rgb(121, 240, 30);
+  color: rgb(0, 0, 0);
 }
 
 .form-button {

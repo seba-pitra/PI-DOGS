@@ -14,8 +14,8 @@
   overflow: hidden;
   background-color: #5cb9ef;
   color: #ececec;
-  width: 120vh;
-  height: 90vh;
+  width: 100vh;
+  height: 80vh;
   margin: 30px auto;
   border-radius: 30px;
   text-align: left;
@@ -36,7 +36,7 @@
 }
 
 .dog-detail-container {
-  animation-duration: 2.5s;
+  animation-duration: 3.5s;
   animation-name: slidein;
   display: flex;
   flex-direction: column;

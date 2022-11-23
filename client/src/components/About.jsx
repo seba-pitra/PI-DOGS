@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "../stylesheets/About.module.css";
 import myImg from "../img/my-profile.png";
 import linkedinImg from "../img/logo-linkedin-blanco.jpg";

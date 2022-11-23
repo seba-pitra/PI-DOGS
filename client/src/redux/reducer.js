@@ -21,7 +21,6 @@ const initialState = {
   dogDetail: {},
   formError: "",
   allTemperaments: [],
-  orderByWeight: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -138,7 +137,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_HEAVIER_TO_LIGHTER:
       const sortedHigherToLower = state.dogs.sort((a, b) => {
         let weightA = parseInt(a.weight.split(" - ")[0]);
-        let weightB = parseInt(b.weight.split(" - ")[0]);
+        let weightB = parseInt(b.weight.split(" - ")[0]); //2 - 3 kg
 
         if (!isNaN(weightA) && !isNaN(weightB)) {
           return weightB - weightA;

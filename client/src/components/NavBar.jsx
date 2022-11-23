@@ -5,8 +5,6 @@ import img from "../img/logo-dog.png";
 import { useDispatch } from "react-redux";
 import * as actions from "../redux/actions";
 
-//color: #7DCCFF
-
 const Nav = (props) => {
   const [inputValue, setInputValue] = useState("");
 

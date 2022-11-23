@@ -30,7 +30,7 @@ const createDog = async ({
     life_span,
   });
 
-  await newDog.addTemperaments(temperaments); //se relaciona que un dog tiene varios temperaments
+  await newDog.addTemperaments(temperaments);
 
   return newDog;
 };
@@ -38,7 +38,6 @@ const createDog = async ({
 const getDogs = async () => {
   const apiDogs = await fetch(urlApi).then((res) => res.json());
   const infoDogs = apiDogs.map((dog) => {
-    //me traigo solo las propiedades que quiero
     return {
       id: dog.id,
       name: dog.name,
@@ -50,7 +49,7 @@ const getDogs = async () => {
     };
   });
 
-  const dbDogs = await Dog.findAll({ include: Temperament }); //incluye los datos de la tabla intermedia
+  const dbDogs = await Dog.findAll({ include: Temperament });
 
   if (!infoDogs && !dbDogs) {
     throw new Error("No dog found");
@@ -79,8 +78,6 @@ const searchDogByName = async (name) => {
 };
 
 const searchDogById = async (id) => {
-  //Maneje los errores con un try-catch xq me mandaba un msj de error que no queria recibir
-  //detallado en lineas comentadas abajo.
   try {
     const foundDogApi = await (
       await getDogs()
@@ -103,9 +100,7 @@ const searchDogById = async (id) => {
 };
 
 const updateDog = async (attribute, value, dogId) => {
-  //Quiero usar esto para cambiar el nombre o peso o altura que EL CLIENTE CREA
   if (!isNaN(dogId)) {
-    //si es un numero...
     throw new Error("The id is not of type UUID");
   }
 

@@ -8,18 +8,11 @@ const {
   updateDog,
   deleteDog,
 } = require("../controllers/dogsControllers");
-const { getTemperaments } = require("../controllers/temperamentsControllers");
 
 const dogsRouter = Router();
 
-//BUENAS PRACTICAS:
-//1- VARIAR EL STATUS CODE
-//2- hacer CRUD
-
 dogsRouter.post("/", async (req, res) => {
   try {
-    await getTemperaments(); //Si no tengo temperaments en la DB,
-    // no voy a poder relacionar el dog con varios temperaments(addTemperaments)
     const newDog = await createDog(req.body);
 
     res.status(201).json(newDog);

@@ -29,7 +29,11 @@ const DogDetail = ({ match }) => {
       </Link>
       <div className={styles["dog-detail-container"]}>
         <h2 className={styles["dog-detail-title"]}>{dog.name}</h2>
-        <img src={dog.imgUrl} alt="" className={styles["dog-detail-img"]} />
+        <img
+          src={dog.imgUrl && dog.imgUrl}
+          alt="dog-detail-img"
+          className={styles["dog-detail-img"]}
+        />
 
         <div className={styles["dog-detail-description"]}>
           <div className={styles["dog-description-left"]}>

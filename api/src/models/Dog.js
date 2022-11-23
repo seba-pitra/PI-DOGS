@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true, //no puedo tener 2 razas igaules en la DB
+        unique: true,
         validate: {
           customValidator(name) {
             for (const letter of name) {
@@ -78,7 +78,7 @@ module.exports = (sequelize) => {
       },
     },
     {
-      timestamps: false, //no aparece createdAt y updatedAt
+      timestamps: false,
     }
   );
 };
