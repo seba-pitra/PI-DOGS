@@ -5,8 +5,11 @@ import styles from "../stylesheets/Home.module.css";
 import Nav from "./NavBar";
 import DogCard from "./DogCard";
 import Paginated from "./Paginated";
+import Loader from "./Loader";
 
 const Home = () => {
+  let existingDogs = true;
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -72,6 +75,15 @@ const Home = () => {
   const handleReset = () => {
     dispatch(actions.getAllDogs());
   };
+
+  if (!allDogs.length) {
+    return (
+      <div>
+        <Nav />
+        <Loader />;
+      </div>
+    );
+  }
 
   return (
     <div className={styles.home}>

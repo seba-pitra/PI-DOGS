@@ -2,6 +2,7 @@ const { Router } = require("express");
 const {
   getTemperaments,
 } = require("../controllers/temperamentsControllers.js");
+const Temperament = require("../models/Temperament.js");
 
 const temperamentRouter = Router();
 
