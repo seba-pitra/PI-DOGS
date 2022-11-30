@@ -13,6 +13,7 @@
 .form {
   background-color: #48b7f8;
   padding: 30px;
+  height: 100vh;
   margin: 0 auto;
   color: #ffffff;
   overflow: hidden;
