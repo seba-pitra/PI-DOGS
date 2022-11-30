@@ -73,7 +73,7 @@ export const createDog = (dogInfo) => {
 
 export const getTemperaments = () => {
   return (dispatch) => {
-    fetch("http://localhost:3001/temperaments")
+    fetch(`${baseURL}/temperaments`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: GET_ALL_TEMPERAMENTS, payload: data });
