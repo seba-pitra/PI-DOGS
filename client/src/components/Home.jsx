@@ -19,7 +19,7 @@ const Home = () => {
   const allTemperaments = useSelector((state) => state.allTemperaments);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const [dogsPerPage, setDogsPerPage] = useState(9);
 
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;

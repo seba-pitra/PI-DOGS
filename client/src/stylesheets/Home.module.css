@@ -40,8 +40,7 @@
   animation-name: slidein;
   width: 100%;
   display: grid;
-  /* se divide en tres columnas */
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
   justify-items: center;
   padding: 50px 0;
