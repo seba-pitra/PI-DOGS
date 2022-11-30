@@ -15,9 +15,12 @@ export const ORDER_BY_ASCENDING_ALPHABETICAL_ORDER =
 export const ORDER_BY_DESCENDING_ALPHABETICAL_ORDER =
   "ORDER_BY_DESCENDING_ALPHABETICAL_ORDER";
 
+// const baseURL = "http://localhost:3001";
+const baseURL = "https://pi-dogs-back-production-c99a.up.railway.app";
+
 export const getAllDogs = () => {
   return (dispatch) => {
-    fetch("http://localhost:3001/dogs")
+    fetch(`${baseURL}/dogs`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: GET_ALL_DOGS, payload: data });
@@ -27,7 +30,7 @@ export const getAllDogs = () => {
 
 export const getDogDetail = (id) => {
   return (dispatch) => {
-    fetch(`http://localhost:3001/dogs/${id}`)
+    fetch(`${baseURL}/dogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: GET_DOG_DETAIL, payload: data });
@@ -37,7 +40,7 @@ export const getDogDetail = (id) => {
 
 export const searchRaceName = (name) => {
   return (dispatch) => {
-    fetch(`http://localhost:3001/dogs?name=${name}`)
+    fetch(`${baseURL}/dogs?name=${name}`)
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: SEARCH_RACE_NAME, payload: data });
@@ -47,7 +50,7 @@ export const searchRaceName = (name) => {
 
 export const createDog = (dogInfo) => {
   return (dispatch) => {
-    fetch("http://localhost:3001/dogs", {
+    fetch(`${baseURL}/dogs`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dogInfo),

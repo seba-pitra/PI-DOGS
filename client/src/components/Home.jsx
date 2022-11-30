@@ -8,8 +8,6 @@ import Paginated from "./Paginated";
 import Loader from "./Loader";
 
 const Home = () => {
-  let existingDogs = true;
-
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -33,6 +31,8 @@ const Home = () => {
   const handleFilterByCreatedOrApi = (e) => {
     const selectValue = e.target.value;
 
+    setCurrentPage(1);
+
     if (selectValue === "Created") {
       dispatch(actions.filterByCreated());
     } else if (selectValue === "Dogs default") {
@@ -47,11 +47,15 @@ const Home = () => {
   const handleFilterByTemperament = (e) => {
     const temperament = e.target.value;
 
+    setCurrentPage(1);
+
     dispatch(actions.filterByTemperament(temperament));
   };
 
   const handleOrderByAlphabeticOrder = (e) => {
     const selectValue = e.target.value;
+
+    setCurrentPage(1);
 
     if (selectValue === "A - Z") {
       dispatch(actions.orderByAscendingAlphabeticalOrder(selectValue));
@@ -65,6 +69,8 @@ const Home = () => {
   const handleOrderByWeight = (e) => {
     const selectValue = e.target.value;
 
+    setCurrentPage(1);
+
     if (selectValue === "Heaver to Lighter") {
       dispatch(actions.orderByHeavierToLighter());
     } else if (selectValue === "Lighter to Heaver") {
@@ -73,6 +79,8 @@ const Home = () => {
   };
 
   const handleReset = () => {
+    setCurrentPage(1);
+
     dispatch(actions.getAllDogs());
   };
 
