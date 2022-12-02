@@ -8,7 +8,6 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
 
   const totalPageNumbers = [];
   for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
-    //le hago el math ceil por que la division esa me da 21.75, lo redondeo para arriba
     totalPageNumbers.push(i);
   }
 
@@ -36,7 +35,7 @@ const Paginated = ({ allDogs, dogsPerPage, paginated, currentPage }) => {
   const nextButtonHandler = () => {
     const nextPage = currentPage + 1;
 
-    if (nextPage > pagesNumbers.length) return; //si el index es igual al total es xq llego al final de la pagina
+    if (nextPage > pagesNumbers.length) return;
 
     if (nextPage > maxLimitNumberPage) {
       setMaxLimitNumberPage(maxLimitNumberPage + limitNumbersPage);
