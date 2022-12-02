@@ -12,11 +12,11 @@
 
 .container-all-form {
   background-color: #48b7f8;
+  height: 100vh;
 }
 
 .form {
   padding: 30px;
-  height: fit-content;
   color: #ffffff;
   overflow: hidden;
   text-align: left;
