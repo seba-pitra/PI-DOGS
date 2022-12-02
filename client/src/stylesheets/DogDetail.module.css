@@ -15,6 +15,8 @@
   background-color: #5cb9ef;
   color: #ececec;
   width: 120vh;
+  height: 900px;
+  height: fit-content;
   margin: 4% auto;
   border-radius: 30px;
   text-align: left;
@@ -36,7 +38,7 @@
 
 .dog-detail-container {
   text-align: center;
-  animation-duration: 3.5s;
+  animation-duration: 3s;
   animation-name: slidein;
   display: flex;
   flex-direction: column;
