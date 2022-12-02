@@ -16,7 +16,7 @@
 
 .form {
   padding: 30px;
-  height: 170vh;
+  height: fit-content;
   color: #ffffff;
   overflow: hidden;
   text-align: left;
