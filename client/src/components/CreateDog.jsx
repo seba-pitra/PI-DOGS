@@ -74,15 +74,17 @@ const CreateDog = (props) => {
   const handleSelect = (e) => {
     const inputTemperament = e.target.value;
 
-    const foundTemp = allTemperaments.find(
-      (temp) => temp.name === inputTemperament
-    );
+    if (input.temperaments.length < 9) {
+      const foundTemp = allTemperaments.find(
+        (temp) => temp.name === inputTemperament
+      );
 
-    setInput({
-      ...input,
-      temperaments: [...input.temperaments, foundTemp.id],
-      nameTemperaments: [...input.nameTemperaments, inputTemperament],
-    });
+      setInput({
+        ...input,
+        temperaments: [...input.temperaments, foundTemp.id],
+        nameTemperaments: [...input.nameTemperaments, inputTemperament],
+      });
+    }
   };
 
   const handleDeleteTemperament = (temperament) => {
