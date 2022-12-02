@@ -13,6 +13,7 @@
   border-radius: 30px;
   padding: 20px;
 }
+
 .Dog-card:hover {
   animation-duration: 1s;
   animation-name: slidein;
@@ -24,11 +25,11 @@
   gap: 10px;
   align-items: center;
   height: 300px;
-  width: 300px;
+  width: 240px;
 }
 
 .Dog-card-img {
-  height: 160px;
+  height: 140px;
   width: fit-content;
   border-radius: 10px;
 }
