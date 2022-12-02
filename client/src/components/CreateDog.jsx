@@ -24,6 +24,7 @@ const CreateDog = (props) => {
     maxHeight: "",
     minWeight: "",
     maxWeight: "",
+    temperaments: [],
   });
 
   const [successfullyCreated, setSuccessfullyCreated] = useState("");
@@ -56,25 +57,28 @@ const CreateDog = (props) => {
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    const property = event.target.name; //el name del input que quiero cambiar
+    const property = event.target.name;
 
     setInput({
       ...input,
-      [property]: value, //se cambia el estado local en la propiedad indicada
+      [property]: value,
     });
 
     setErrors(
       validate({
         ...input,
-        [property]: value, //hay q ponerle asi x el delay, el estado input no cambia al instante, asi q se lo paso manualmente
+        [property]: value,
       })
     );
   };
 
   const handleSelect = (e) => {
     const inputTemperament = e.target.value;
+    const validate =
+      input.temperaments.length < 9 &&
+      !input.nameTemperaments.includes(inputTemperament);
 
-    if (input.temperaments.length < 9) {
+    if (validate) {
       const foundTemp = allTemperaments.find(
         (temp) => temp.name === inputTemperament
       );
@@ -110,6 +114,7 @@ const CreateDog = (props) => {
       ...input,
       height: `${input.maxHeight} - ${input.maxHeight} cm`,
       weight: `${input.minWeight} - ${input.maxWeight} kg`,
+      life_span: `${input.life_span} years`,
     };
 
     dispatch(actions.createDog(dispatchInput));
@@ -248,9 +253,9 @@ const CreateDog = (props) => {
             <div className={styles["input-container"]}>
               <label htmlFor="life-span">Life Span</label>
               <input
-                type="text"
+                type="number"
                 className={styles["form-input"]}
-                placeholder="10 years"
+                placeholder="10"
                 name="life_span"
                 value={input.life_span}
                 onChange={handleInputChange}
@@ -287,6 +292,13 @@ const CreateDog = (props) => {
                   </div>
                 ))}
               </div>
+              {input.temperaments.length === 9 ? (
+                <span className={styles["form-error-temperaments"]}>
+                  You can only select 9 temperaments
+                </span>
+              ) : (
+                ""
+              )}
             </div>
             {formError && (
               <p className={styles["form-error-back"]}>{formError}</p>

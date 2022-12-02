@@ -16,7 +16,7 @@
 
 .form {
   padding: 30px;
-  height: 150vh;
+  height: 170vh;
   color: #ffffff;
   overflow: hidden;
   text-align: left;
@@ -119,14 +119,14 @@
 .name-temperaments {
   margin: 0 10px 10px;
   padding: 5px;
-  height: 30px;
-  background-color: rgb(248, 248, 37);
-  color: black;
+  height: 50px;
   border-radius: 8px;
+  background-color: rgb(248, 248, 37);
+  gap: 10px;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
 }
 
 .delete-temperament {
@@ -139,6 +139,12 @@
 .delete-temperament:hover {
   background-color: rgb(50, 49, 49);
   cursor: pointer;
+}
+
+.form-error-temperaments {
+  color: rgb(150, 4, 4);
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .form-error-back {
