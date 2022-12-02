@@ -138,10 +138,10 @@ const CreateDog = (props) => {
 
   return (
     <div className={styles["container-all-form"]}>
+      <Link to={"/home"} className={styles["form-back-link"]}>
+        {"<"} Back
+      </Link>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <Link to={"/home"} className={styles["form-back-link"]}>
-          {"<"} Back
-        </Link>
         <div className={styles["form-container"]}>
           <img src={img} alt="form-img" className={styles["form-img"]} />
           <div className={styles["all-inputs-container"]}>
