@@ -16,7 +16,7 @@ export const ORDER_BY_DESCENDING_ALPHABETICAL_ORDER =
   "ORDER_BY_DESCENDING_ALPHABETICAL_ORDER";
 
 // const baseURL = "http://localhost:3001";
-const baseURL = "https://pi-dogs-back-production-c99a.up.railway.app";
+const baseURL = "https://pi-dogs-back-b2ia.onrender.com";
 
 export const getAllDogs = () => {
   return (dispatch) => {
