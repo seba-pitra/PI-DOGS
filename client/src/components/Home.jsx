@@ -88,7 +88,7 @@ const Home = () => {
     return (
       <div>
         <Nav />
-        <Loader />;
+        <Loader />
       </div>
     );
   }
