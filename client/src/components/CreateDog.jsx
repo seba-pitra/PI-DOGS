@@ -112,7 +112,7 @@ const CreateDog = (props) => {
 
     const dispatchInput = {
       ...input,
-      height: `${input.maxHeight} - ${input.maxHeight} cm`,
+      height: `${input.minHeight} - ${input.maxHeight} cm`,
       weight: `${input.minWeight} - ${input.maxWeight} kg`,
       life_span: `${input.life_span} years`,
     };
