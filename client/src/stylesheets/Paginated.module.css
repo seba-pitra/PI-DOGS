@@ -46,7 +46,8 @@
 }
 
 .paginated-title:hover {
-  background-color: #c17aff;
+  background-color: #0b72ae;
+  color: #fff;
   animation-duration: 1s;
   animation-name: moveInHover;
 }
@@ -61,13 +62,15 @@
 }
 
 .paginated-button:hover {
-  background-color: #c17aff;
+  background-color: #0b72ae;
+  color: #fff;
   animation-duration: 1s;
   animation-name: moveInHover;
 }
 
 .current-page {
   background-color: #42b7fa;
+  color: #fff;
   width: 50px;
   padding: 7px;
   border-radius: 30px;

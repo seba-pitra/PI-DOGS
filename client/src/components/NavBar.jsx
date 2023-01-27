@@ -29,14 +29,15 @@ const Nav = (props) => {
         </Link>
       </div>
       <div className={styles["page-links"]}>
-        <Link to={"/home"}>Home</Link>
-        <Link to={"/about"}>About me</Link>
-        <Link to={"/dogs/create"}>Create your breed</Link>
         <input
           type="text"
-          placeholder="Search your breed..."
+          className={styles["nav-bar-input"]}
+          placeholder="Search your breed"
           onChange={changeHandler}
         />
+        <Link to={"/home"}>Home</Link>
+        <Link to={"/dogs/create"}>Create your breed</Link>
+        <Link to={"/about"}>About me</Link>
       </div>
     </div>
   );

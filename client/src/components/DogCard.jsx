@@ -24,6 +24,9 @@ const DogCard = ({ name, imgUrl, id }) => {
           <h2 className={styles["Dog-card-title"]}>{name}</h2>
         </div>
       </Link>
+      <Link to={`/dog/${id}`} className={styles["view-details-button"]}>
+        View Details
+      </Link>
     </div>
   );
 };

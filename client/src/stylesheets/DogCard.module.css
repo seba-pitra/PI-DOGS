@@ -1,22 +1,20 @@
-@keyframes slidein {
-  from {
-    transform: translateY(0px);
-  }
-
-  to {
-    transform: translateY(10px);
-  }
-}
-
 .Dog-card {
   background-color: #e1e1e1;
   border-radius: 30px;
   padding: 20px;
+  width: 90%;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  border: solid 1px #bdbdbd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Dog-card:hover {
-  animation-duration: 1s;
-  animation-name: slidein;
+  transform: scale(1.05);
 }
 
 .Dog-card-container {
@@ -24,7 +22,7 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  height: 300px;
+  height: 280px;
   width: 240px;
 }
 
@@ -42,7 +40,6 @@
 .Dog-card-link {
   text-align: end;
   margin: 0;
-  cursor: pointer;
   padding-right: 20px;
   font-size: 15px;
   color: #09a0f7;
@@ -50,4 +47,29 @@
 
 .Dog-card-link:hover {
   color: #0b5986;
+}
+
+.view-details-button {
+  background-color: #0a99ec;
+  border: none;
+  transition: all 0.15s ease-in;
+  width: 80%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  font-size: 18px;
+  border-radius: 5px;
+  bottom: -40px;
+  visibility: hidden;
+  position: absolute;
+  color: #fff;
+  margin: 8px 0;
+  align-items: center;
+}
+
+.Dog-card:hover > .view-details-button {
+  cursor: pointer;
+  visibility: visible;
+  bottom: 0px;
 }

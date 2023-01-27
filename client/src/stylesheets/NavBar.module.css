@@ -15,10 +15,6 @@ a {
   font-weight: bold;
 }
 
-a:hover {
-  color: rgba(120, 35, 166, 0.578);
-}
-
 .logo {
   display: flex;
   flex-direction: row;
@@ -44,4 +40,16 @@ input {
   font-size: 18px;
   border: none;
   background-color: #e8eef2;
+}
+
+.nav-bar-input {
+  width: 500px;
+  border-radius: 10px;
+  height: 33px;
+  padding: 0 10px;
+  font-size: 18px;
+  border: none;
+  background-color: #e8eef2;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
